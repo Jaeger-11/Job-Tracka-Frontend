@@ -17,7 +17,7 @@ const Signup = () => {
                     <span className="pointer"> <FaTimes onClick={() => navigate("/")} /> </span>
                 </div>
                 <form action="" method="post" className="modal-form">
-                    <h3 className="center">Create Account</h3>
+                    <h2 className="center">Create Account</h2>
                     <p className="modal-form-input-box"><input type="text" name="username" id="username" placeholder="Username" /></p>
                     <p className="modal-form-input-box"><input type="email" name="email" id="email" placeholder="Email" /></p>
                     <p className="modal-form-input-box"><input type="password" name="password" id="password" placeholder="Password" /></p>

@@ -1,7 +1,6 @@
 import Navigation from "../Components/navigation";
 import { useNavigate } from "react-router-dom";
 import "../Styles/landing.scss";
-import laptopwhite from "../Assets/laptopwhite-landing.jpg";
 import undrawreminder from "../Assets/undraw_reminder.svg";
 
 const Landing = () => {
