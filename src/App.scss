@@ -1,0 +1,64 @@
+@import "./Styles/variable";
+
+@font-face{
+  font-family: "monument-extended";
+  src: url("./Fonts/MonumentExtended/MonumentExtended-Regular.otf");
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Poppins", sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo{
+  font-size: 25px;
+  font-family: "Caveat";
+}
+
+input{
+  width: 100%;
+}
+
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.center{
+  text-align: center;
+}
+
+button{
+  cursor: pointer;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  font: inherit;
+}
+
+.green{
+  color: $green;
+}
+.red{
+  color: $red;
+}
+.pointer{
+  cursor: pointer;
+}
+.bg-green{
+  background-color: $green;
+}
+.bg-red{
+  background-color: $red;
+}

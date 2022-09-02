@@ -1,0 +1,69 @@
+@import "./variable.scss";
+
+.landing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: $white;
+}
+
+.landing-container{
+    width: 90%;
+    height: 85vh;
+    margin: auto;
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    .landing-herobox{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        padding: 2rem;
+        justify-content: center;
+        // background-color: #36454f;
+        // color: $white;
+        h1{
+            font-size: 2.5rem;
+            font-family: "monument-extended";
+        }
+        .herotext{
+            font-size: 21px;
+            line-height: 130%;
+        }
+        .herolink{
+            font-size: 21px;
+            display: flex;
+            gap: 1rem;     
+            // background-color: $light-gray;
+            border: 2px dashed $light-gray;
+            width: max-content;
+            padding: 0.5rem 1rem;
+            cursor: pointer;       
+            .login{
+                color: $green;
+                text-decoration: underline;
+            }
+            .signup{
+                color: $red;
+                text-decoration: underline;
+            }
+        }
+    }
+    .landing-heroimage{
+        flex:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $green;
+        border-radius: 20% 5px;
+        img{
+            width: 80%;
+            height: 80%;
+            object-fit: fill;
+        }
+    }
+}

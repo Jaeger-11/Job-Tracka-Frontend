@@ -1,0 +1,68 @@
+@import "./variable.scss";
+
+.modal-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        border-radius: 10px;
+        background-color: $white;
+        border-radius: black 0px 3px 6px 12px;
+        &-sect1{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                width: 80%;
+                height: 80%;
+                object-fit: fill;
+            }
+        }
+        &-sect2{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex:2;
+            padding: 1rem;
+        }
+    }
+    .modal-form{
+        width: 500px;
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        // height: 80%;
+        justify-content: center;
+        &-input-box{
+            width: 100%;
+            input{
+                // height: 2.5rem;
+                padding:0.7rem 1rem;
+                border-radius: 5px;
+                border: none;
+                background-color: rgba(222, 229, 241, 0.911);
+                font-size: 18px;
+                line-height: 25px;
+                &::placeholder{
+                    color: black;
+                }
+            }
+        }
+        button{
+            font-weight: 700;
+            color: white;
+        }
+    }
+}

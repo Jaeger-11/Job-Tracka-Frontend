@@ -1,0 +1,28 @@
+@import "./_variable.scss";
+
+.navigation{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    
+    &-sub{
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    .login{
+        color: $green;
+        background-color: $primary-bg;
+    }
+
+    @media screen and (max-width: $tablet) {
+        &-sub{
+            gap: 1.5rem;
+        }
+    }
+}
