@@ -1,22 +1,21 @@
 @import "./variable.scss";
 
 .landing{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     width: 100%;
     background-color: $white;
 }
 
 .landing-container{
     width: 90%;
-    height: 85vh;
-    margin: auto;
+    height: max-content;
+    margin: 10px auto;
     display: flex;
     border-radius: 5px;
     overflow: hidden;
+    @media screen and (max-width: $laptop) {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
     .landing-herobox{
         flex: 1;
         display: flex;
@@ -24,11 +23,12 @@
         gap: 1.3rem;
         padding: 2rem;
         justify-content: center;
-        // background-color: #36454f;
-        // color: $white;
         h1{
             font-size: 2.5rem;
             font-family: "monument-extended";
+            @media screen and (max-width: $tablet) {
+                font-size: 2rem;
+            }
         }
         .herotext{
             font-size: 21px;
@@ -38,7 +38,6 @@
             font-size: 21px;
             display: flex;
             gap: 1rem;     
-            // background-color: $light-gray;
             border: 2px dashed $light-gray;
             width: max-content;
             padding: 0.5rem 1rem;
@@ -60,10 +59,18 @@
         align-items: center;
         background-color: $green;
         border-radius: 20% 5px;
+        @media screen and (max-width: $laptop) {
+            padding: 1rem;
+            background-color: $white;
+        }
         img{
             width: 80%;
             height: 80%;
             object-fit: fill;
+            @media screen and (max-width: $laptop) {
+                width: 80%;
+            }
         }
     }
 }
+

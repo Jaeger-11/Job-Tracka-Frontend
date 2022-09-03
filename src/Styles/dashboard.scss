@@ -1,0 +1,15 @@
+@import "./variable";
+
+.dashboard{
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    .flex-all{
+        flex: 1;
+    }
+    &-main{
+        flex: 1;
+        height: 100%;
+        padding:0.5rem 1rem;
+    }
+}

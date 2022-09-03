@@ -62,3 +62,34 @@ button{
 .bg-red{
   background-color: $red;
 }
+
+.flex-icons{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.flex-all{
+  display: flex;
+}
+
+
+// STYLING OF CURRENT COMPONENTS
+.current{
+  padding: 1rem;
+  border-bottom: 1px solid $primary-bg;
+  .pathname{
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .currentDate{
+    font-style: italic;
+  }
+}
+
+// STYLING OF FIXED PROFILE
+.fixed-profile{
+  border-left: $primary-bg 1px solid;
+  height: 100%;
+  padding: 0.5rem;
+}

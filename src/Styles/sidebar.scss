@@ -1,0 +1,17 @@
+@import "./variable";
+
+.sidebar{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding:0 1rem;
+    width: max-content;
+    border-right: 1px solid $primary-bg;
+    &-main{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+

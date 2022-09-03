@@ -1,6 +1,7 @@
 import "../Styles/sign.scss";
 import undrawlanding from "../Assets/undraw_job_offers.svg";
 import { FaTimes } from "react-icons/fa";
+import { MdArrowBackIosNew } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -10,7 +11,7 @@ const Login = () => {
         <div className="modal">
             <section className="modal-sect2">
                 <div className="flex-between">
-                    <h3 className="logo">JobTracka</h3>
+                    <h3 className="logo pointer" onClick={() => navigate("/")} >JobTracka</h3>
                     <span className="pointer"> <FaTimes onClick={() => navigate("/")} /> </span>
                 </div>
                 <form action="" method="post" className="modal-form">
@@ -20,7 +21,7 @@ const Login = () => {
                     <button className="bg-red">Login</button>
                     <p className="center">Do not have an account? <span className="green pointer" onClick={()=>navigate('/signup')}>Create Account</span></p>
                 </form>
-                <p className="pointer" onClick={() => navigate("/")} >Go Back</p>
+                <p className="pointer flex-icons" onClick={() => navigate("/")} > <MdArrowBackIosNew/> Go Back</p>
             </section>
             <section className="modal-sect1 bg-green">
                 <img src={undrawlanding} alt="join illustration" />

@@ -22,6 +22,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @media screen and (max-width: 820px ) {
+                display: none;
+            }
+            // @media screen and (max-width: 820px ) and (max-height: $laptop) {
+            //     display: none;
+            // }
             img{
                 width: 80%;
                 height: 80%;
@@ -43,12 +49,13 @@
         flex-direction: column;
         gap: 1.5rem;
         padding: 1rem 0;
-        // height: 80%;
         justify-content: center;
+        @media screen and (max-width: $laptop ) {
+            width: 90%;
+        }
         &-input-box{
             width: 100%;
             input{
-                // height: 2.5rem;
                 padding:0.7rem 1rem;
                 border-radius: 5px;
                 border: none;

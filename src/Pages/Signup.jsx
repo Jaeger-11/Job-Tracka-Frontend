@@ -1,6 +1,7 @@
 import "../Styles/sign.scss";
 import { FaTimes } from "react-icons/fa";
 import undrawjoin from "../Assets/undraw_join.svg";
+import { MdArrowBackIosNew } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -13,7 +14,7 @@ const Signup = () => {
             </section>
             <section className="modal-sect2">
                 <div className="flex-between">
-                    <h3 className="logo">JobTracka</h3>
+                    <h3 className="logo pointer" onClick={() => navigate("/")} >JobTracka</h3>
                     <span className="pointer"> <FaTimes onClick={() => navigate("/")} /> </span>
                 </div>
                 <form action="" method="post" className="modal-form">
@@ -24,7 +25,7 @@ const Signup = () => {
                     <button className="bg-green">Sign Up</button>
                     <p className="center">Have an account already? <span className="red pointer" onClick={()=>navigate('/login')} >Login</span></p>
                 </form>
-                <p className="pointer" onClick={() => navigate("/")} >Go Back</p>
+                <p className="pointer flex-icons" onClick={() => navigate("/")} > <MdArrowBackIosNew/> Go Back</p>
             </section>
         </div>
     </div>
