@@ -1,0 +1,18 @@
+@import './variable';
+
+.about{
+    padding: 1rem;
+    &-hero{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        &-article{
+            
+        }
+
+    }
+
+    footer{
+        text-align: center;
+        margin: 10px 0;
+    }
+}

@@ -3,6 +3,7 @@
 .landing{
     width: 100%;
     background-color: $white;
+    color: $black;
 }
 
 .landing-container{
@@ -12,6 +13,7 @@
     display: flex;
     border-radius: 5px;
     overflow: hidden;
+    padding-bottom: 2rem;
     @media screen and (max-width: $laptop) {
         width: 100%;
         flex-direction: column-reverse;
@@ -21,7 +23,7 @@
         display: flex;
         flex-direction: column;
         gap: 1.3rem;
-        padding: 2rem;
+        padding: 1.5rem;
         justify-content: center;
         h1{
             font-size: 2.5rem;
@@ -61,7 +63,7 @@
         border-radius: 20% 5px;
         @media screen and (max-width: $laptop) {
             padding: 1rem;
-            background-color: $white;
+            background-color: inherit;
         }
         img{
             width: 80%;
