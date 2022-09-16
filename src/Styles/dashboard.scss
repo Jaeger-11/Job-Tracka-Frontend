@@ -37,4 +37,38 @@
             }
         }
     }
+    .dashstats{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 1rem;
+        &-outer{
+            background-color: $white ;
+            position: relative;
+        }
+        &-inner{
+            padding: 1rem;
+            border: 2px solid green;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            h3{
+                font-weight: normal;
+            }
+            p{
+                font-size: 32px;
+                text-align: right;
+                padding: 0;
+            }
+        }
+        .outer{
+            height: 100%;
+            bottom: 0.5rem;
+            width: 100%;
+            position: absolute;
+            background-color: $primary-bg;
+            z-index: -1;
+            right: 0.5rem;
+        }
+    }
 }

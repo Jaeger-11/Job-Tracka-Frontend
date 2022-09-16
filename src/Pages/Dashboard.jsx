@@ -5,13 +5,12 @@ import FixedProfile from '../Components/fixedProfile';
 import "../Styles/dashboard.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import DashStats from '../Components/dashStats';
 import welcome from '../Assets/undraw_welcome.svg';
-import { useQuery } from 'react-query';
-import axios from 'axios';
 
 const Dashboard = () => {
-  const { username, token } = useSelector((store) =>  store.user )
-
+  const { username, token } = useSelector((store) =>  store.user );
+  
   return (
     <div className='flex-all'>
         <Sidebar/>
@@ -29,9 +28,15 @@ const Dashboard = () => {
                     </p>
                   </section>
 
+                  <DashStats/>
+
                   <div className = "flex-between">
-                    <Link to="/applications"><span className="green pointer">View Applications</span></Link>
-                    <Link to="/analytics"><span className="red pointer" >Check Analytics</span></Link>
+                    <Link to="/applications">
+                      <span className="green pointer">View Applications</span>
+                    </Link>
+                    <Link to="/analytics">
+                      <span className="red pointer" >Check Analytics</span> <br/>
+                    </Link>
                   </div>
                 </main>
                 <FixedProfile/>

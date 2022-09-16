@@ -62,21 +62,31 @@ button{
 .bg-red{
   background-color: $red;
 }
-
 .flex-icons{
   display: flex;
   gap: 10px;
   align-items: center;
 }
-
 .flex-all{
   display: flex;
 }
-
+.flex-one{
+  flex: 1;
+  display: flex;
+  .one{
+    flex: 1;
+  }
+}
 .flex-column{
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+.loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40%;
 }
 
 

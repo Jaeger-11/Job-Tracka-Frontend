@@ -4,7 +4,7 @@ import undrawjoin from "../Assets/undraw_join.svg";
 import { MdArrowBackIosNew } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import apiClient from "../Hooks/useAxios";
+import useAxios from "../Hooks/useAxios";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from "react-redux";
 import { logOut, userIn } from "../Features/userSlice"
@@ -17,7 +17,7 @@ const Signup = () => {
     const signIn = async (values) => {
         try {
             dispatch(logOut())
-            const response = await apiClient.post('/auth/signup', values)
+            const response = await useAxios.post('/auth/signup', values)
             window.localStorage.setItem('jobTrackaUser', JSON.stringify(response.data));
             const user  = JSON.parse(window.localStorage.getItem('jobTrackaUser'))
             if (user){

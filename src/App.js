@@ -9,9 +9,13 @@ import NotFound from './Pages/NotFound';
 import Applications from './Pages/Applications';
 import NewApplication from './Pages/NewApplication';
 import Analytics from './Pages/Analytics';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
+    <QueryClientProvider client={queryClient}  >
     <BrowserRouter>
 
       <Routes>
@@ -26,6 +30,7 @@ function App() {
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
