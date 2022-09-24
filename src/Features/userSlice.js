@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 var user = JSON.parse(window.localStorage.getItem('jobTrackaUser')) || '';
 
@@ -8,11 +7,12 @@ function capitalizeFirstLetter(str) {
     const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
     return capitalized;
 }
+const User = capitalizeFirstLetter(user.username)
 
 const initialState = {
-    username: capitalizeFirstLetter(user.username) || '',
+    username: User || '',
     token: `Bearer ${user.token}` || '',
-    // isLoading: true,
+    isLoading: true,
 }
 
 const userSlice = createSlice({

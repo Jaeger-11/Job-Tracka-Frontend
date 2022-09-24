@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import GoalsProfile from './goalsProfile';
 
 const FixedProfile = () => {
-  const { username, token } = useSelector((store) =>  store.user )
+  const { username} = useSelector((store) =>  store.user )
 
   return (
     <div className='fixed-profile'>
@@ -12,13 +13,7 @@ const FixedProfile = () => {
             <div className='user-img-cont'></div>
             <h3>{username}</h3>
           </article>
-          
-          <ul>
-            <h3> Goals</h3>
-            <li>Record a total of 10 applications weekly</li>
-            <li>Work on my CV</li>
-            <li>Work on my social media presence, especially LinkedIn</li>
-          </ul>
+          <GoalsProfile/>
         </section>
     </div>
   )

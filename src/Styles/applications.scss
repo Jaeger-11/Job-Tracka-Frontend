@@ -1,5 +1,86 @@
 @import "./variable";
+@import "./base";
 
+.flex-applications{
+    @include flex($align:initial, $direction:column);
+    flex:1;
+}
 .applications{
     padding: 1rem;
+    background-color: $primary-bg;
+    flex:1;
+    overflow-y: scroll;
+    height: calc(100vh - 3.7rem);
+    &-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .form{
+        .flex-search{
+            @include flex($justify: initial, $gap: 10px);
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+        }
+        input, select{
+            @include input();
+        }
+        .search-div{
+            display: flex;
+            margin-top: 1.1rem;
+            flex: 1;
+        }
+    }
+    .pagination{
+        @include flex($justify: right);
+        margin-top: 1rem;
+        span{
+            padding: 5px 10px;
+            border: 1px solid $fade;
+            cursor:pointer;
+        }
+        .control{
+            background-color: $black;
+            color: $white;
+        }
+    }
+}
+.jobs{
+    background-color: $white;
+    border-radius: 5px;
+    box-shadow: $fade 0px 3px 5px;
+    .flex-sect{
+        @include flex($gap: 2rem)
+    }
+    section{
+        padding: 10px !important;
+        svg{
+            color: $fade;
+        }
+    }
+    .jobs-sect-1{
+        border-bottom: 1px solid $brdclr;
+    }
+    button{
+        @include btn($pad:7px 1rem);
+        font-weight: 700;
+    }
+    .pending{
+        background-color: orange;
+    }
+    .success{
+        background-color: $green;
+    }
+    .declined{
+        background-color: $black;
+        color: $white;
+    }
+    .rejected{
+        background-color: $red;
+    }
+    .interview{
+        background-color: #3b8ba5;
+    }
 }

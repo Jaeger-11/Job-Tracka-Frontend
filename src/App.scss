@@ -1,4 +1,5 @@
 @import "./Styles/variable";
+@import "./Styles/base";
 
 @font-face{
   font-family: "monument-extended";
@@ -11,47 +12,56 @@
   box-sizing: border-box;
 }
 
-body{
-  font-family: "Poppins", sans-serif;
+@media (prefers-color-scheme: light) {
+  body{
+      background-color: $white;
+      color: $black;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body{
+    background: $black;
+    color: $white;
+  }
 }
 
+body{
+  font-family: "Poppins", sans-serif;
+  background-color: $white;
+  color: $black;
+}
 a{
   text-decoration: none;
   color: inherit;
 }
-
 .logo{
   font-size: 25px;
   font-family: "Caveat";
 }
-
 input{
   width: 100%;
 }
-
 .flex-between{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
+  @include flex($justify:space-between);
+  width: 100%;
 }
-
 .center{
   text-align: center;
 }
-
 button{
-  cursor: pointer;
-  padding: 0.7rem 1.5rem;
-  border: none;
-  font: inherit;
+  @include btn()
 }
-
 .green{
   color: $green;
+  &:hover{
+    color: $red;
+  }
 }
 .red{
   color: $red;
+  &:hover{
+    color: $green;
+  }
 }
 .pointer{
   cursor: pointer;
@@ -70,30 +80,19 @@ button{
 .flex-all{
   display: flex;
 }
-.flex-one{
-  flex: 1;
-  display: flex;
-  .one{
-    flex: 1;
-  }
-}
 .flex-column{
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  @include flex($direction: column, $gap:1.5rem, $align:initial);
 }
 .loading{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40%;
+  @include flex( $justify:center );
+  flex: 1;
 }
 
 
 // STYLING OF CURRENT COMPONENTS
 .current{
   padding: 1rem;
-  border-bottom: 1px solid $primary-bg;
+  border-bottom: 2px solid $brdclr;
   .pathname{
     text-transform: uppercase;
     font-weight: bold;
@@ -105,14 +104,14 @@ button{
 
 // STYLING OF FIXED PROFILE
 .fixed-profile{
-  border-left: $primary-bg 1px solid;
+  background-color: $primary-bg;
+  border-left: $brdclr 2px solid;
   height: 100%;
   padding: 0.5rem 1rem;
-  width: 25%;
+  min-width: 250px;
+  max-width: 25%;
   section{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    @include flex($direction:column, $gap:2rem, $align:initial);
   }
   article{
     text-align: center;
@@ -121,20 +120,17 @@ button{
     margin: 0.5rem auto;
     width: 150px;
     height: 150px;
-    background-color: $light-gray;
+    background-color: $white;
     border-radius: 40%;
   }
   ul li{
-    margin: 5px 10px;
-    // list-style: none;
+    margin: 10px;
   }
 }
 
 //STYLING OF NOT-FOUND PAGE
 .notfound{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex($justify:center);
   height: 100vh;
   section{
     text-align: center;
@@ -145,4 +141,12 @@ button{
       }
     }
   }
+}
+
+// STYLING OF TOAST COMPONENT
+.toast{
+  z-index: 5;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }

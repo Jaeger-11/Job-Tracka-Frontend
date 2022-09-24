@@ -1,5 +1,15 @@
 @import "./variable";
+@import "./base";
 
+.flex-new{
+    @include flex($align:initial, $direction:column);
+    flex:1;
+    .flex-all{
+        flex: 1;
+    }
+}
 .new{
+    height: 100%;
     padding: 1rem;
+    flex: 1;
 }

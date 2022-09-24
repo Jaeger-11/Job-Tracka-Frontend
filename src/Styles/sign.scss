@@ -1,4 +1,5 @@
 @import "./variable.scss";
+@import "./base";
 
 .modal-container{
     position: absolute;
@@ -6,28 +7,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: hsla(0, 0%, 100%, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // background-color: hsla(0, 0%, 100%, 0.4);
+    @include flex($justify:center);
     .modal{
         width: 100%;
         height: 100%;
         display: flex;
         border-radius: 10px;
-        background-color: $white;
+        // background-color: $white;
         border-radius: black 0px 3px 6px 12px;
         &-sect1{
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex($justify:center);
             @media screen and (max-width: 820px ) {
                 display: none;
             }
-            // @media screen and (max-width: 820px ) and (max-height: $laptop) {
-            //     display: none;
-            // }
             img{
                 width: 80%;
                 height: 80%;
@@ -35,21 +29,17 @@
             }
         }
         &-sect2{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            @include flex($justify:space-between, $direction:column, $pad:1rem , $align:flex-start);
             flex:2;
-            padding: 1rem;
+            .flex-between{
+                width: 100%;
+            }
         }
     }
     .modal-form{
         width: 500px;
         margin: 1rem auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 1rem 0;
-        justify-content: center;
+        @include flex($justify:center, $direction:column,$gap:1.5rem, $pad: 1rem 0);
         @media screen and (max-width: $laptop ) {
             width: 90%;
         }
@@ -75,6 +65,8 @@
         button{
             font-weight: 700;
             color: white;
+            width: 100%;
+            padding: 0.7rem;
         }
     }
 }

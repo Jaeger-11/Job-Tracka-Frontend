@@ -7,13 +7,20 @@
     justify-content: space-around;
     padding:0 1.5rem;
     width: max-content;
-    border-right: 1px solid $primary-bg;
+    border-right: 2px solid $brdclr;
+    color: $lilfade;
     &-main{
         display: flex;
         flex-direction: column;
         gap: 1rem;
         padding: 0.5rem;
+        .sidelink {
+            svg{
+            color: $fade
+            }
+        }
         .sidelink:hover{
+            svg{color: $red;}
             transform: scale(1.1);
             color: $red;
         }

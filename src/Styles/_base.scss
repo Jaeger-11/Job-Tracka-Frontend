@@ -1,0 +1,35 @@
+@import './variable';
+
+//MIXINS
+@mixin flex($direction: row, $gap:0, $justify: left, $pad: 0, $align:center ) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+    justify-content: $justify;
+    align-items: $align;
+    padding: $pad;
+}
+
+@mixin texts($clr:inherit, $pad:0, $fSize: 1rem, $weight:normal ) {
+    color: $clr;
+    padding: $pad;
+    font-size: $fSize;
+    font-weight: $weight;
+}
+
+@mixin btn($bkgrd:inherit, $clr:inherit, $pad: 1rem) {
+    cursor: pointer;
+    padding: $pad;
+    border: none;
+    font: inherit;
+    background-color: $bkgrd;
+    color: $clr;
+}
+
+@mixin input($bkgrd:$white, $pad:10px 5px, $width: 100%, $rad:0){
+    font: inherit;
+    background-color: $bkgrd;
+    padding: $pad;
+    border-radius: $rad;
+    border: 1px solid $fade;
+}

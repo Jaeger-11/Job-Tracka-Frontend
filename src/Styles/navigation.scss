@@ -1,26 +1,21 @@
 @import "./_variable.scss";
+@import "./base";
 
 .navigation{
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex( $justify: space-between);
     width: 90%;
     margin: auto;
+    padding: 0.3rem;
     @media screen and (max-width: $laptop) {
         width: 100%;
-        padding: 0.5rem;
     }
     &-sub{
-        display: flex;
-        align-items: center;
-        gap: 2.5rem;
+        @include flex($gap:2.5rem);
         font-size: 1.2rem;
     }
 
     .login{
-        color: $green;
-        background-color: $primary-bg;
+        @include btn($clr: $green, $bkgrd: $primary-bg, $pad: 0.9rem 1.5rem);
     }
 
     @media screen and (max-width: $tablet) {

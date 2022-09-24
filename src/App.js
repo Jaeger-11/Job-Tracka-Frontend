@@ -9,7 +9,8 @@ import NotFound from './Pages/NotFound';
 import Applications from './Pages/Applications';
 import NewApplication from './Pages/NewApplication';
 import Analytics from './Pages/Analytics';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import Profile from './Pages/Profile';
+import { QueryClient, QueryClientProvider} from 'react-query';
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/applications' element={<Applications/>} />
         <Route path='/new' element={<NewApplication/>} />
         <Route path='/analytics' element={<Analytics/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
