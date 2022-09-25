@@ -27,16 +27,20 @@
             font-size: 0.8rem;
             font-weight: 700;
         }
-        .flex-radio{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-        .radio{
-            display: inline;
-            width: max-content;
-            margin-right: 5px;
-            cursor:pointer;
-            accent-color: $red;
+        .flex-inputs{
+            @include flex($justify:space-between, $align:initial);
+            flex-wrap: wrap;
+            .flex-radio{
+                @include flex($gap: 50px, $align:initial);
+                flex-wrap: wrap;
+            }
+            .radio{
+                display: inline;
+                width: max-content;
+                margin-right: 5px;
+                cursor:pointer;
+                accent-color: $red;
+            }
         }
         .btn-ctn{
             text-align: right;
@@ -47,6 +51,16 @@
             padding: 1rem 2rem;
             font-weight: 700;
             border-radius: 5px;
+            &:hover{
+                background-color: $red;
+                transform: scale(1.1);
+                color:$black;
+                transition: all 100ms ease-out;
+            }
+        }
+        .textarea{
+            @extend .text;
+            min-width: 450px;
         }
     }
 }

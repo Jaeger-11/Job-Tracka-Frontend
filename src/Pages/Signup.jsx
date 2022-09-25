@@ -66,15 +66,15 @@ const Signup = () => {
                     <h2 className="center">Create Account</h2>
                     <p className="modal-form-input-box">
                         <Field type="text" name="username" placeholder="Username" className="input"/>
-                        <ErrorMessage name="username" component="span" className="sign-error" />
+                        <ErrorMessage name="username" component="span" className="error" />
                     </p>
                     <p className="modal-form-input-box">
                         <Field type="email" name="email" placeholder="Email" className="input"/> <br />
-                        <ErrorMessage name="email" component="span" className="sign-error" />
+                        <ErrorMessage name="email" component="span" className="error" />
                     </p>
                     <p className="modal-form-input-box">
                         <Field type="password" name="password" placeholder="Password" className="input"/> <br />
-                        <ErrorMessage name="password" component="span" className="sign-error" />
+                        <ErrorMessage name="password" component="span" className="error" />
                         <span className="red" >{message}</span>
                     </p>
                     <button className="bg-green" type="submit">Sign Up</button>

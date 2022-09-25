@@ -87,6 +87,12 @@ button{
   @include flex( $justify:center );
   flex: 1;
 }
+.error{
+  padding-left: 10px;
+  color: $red;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
 
 
 // STYLING OF CURRENT COMPONENTS

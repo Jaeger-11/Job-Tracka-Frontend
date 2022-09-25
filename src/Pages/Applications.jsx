@@ -111,7 +111,7 @@ const Applications = () => {
                             { isLoading && <Loader/> }
                             <section className="applications-grid">
                                 {applications.map((application) => {
-                                    return <Jobs {...application} />
+                                    return <Jobs {...application} key={application._id} />
                                 })}
                             </section>
                             {totalPages> 1 && 
