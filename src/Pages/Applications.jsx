@@ -6,10 +6,11 @@ import "../Styles/applications.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllApplications, clearFilters, handleInput } from "../Features/applicationSlice";
 import Jobs from "../Components/jobs";
+import Loader from "../Components/loader";
 
 const Applications = () => {
     const dispatch = useDispatch();
-    const { applications, totalPages, totalApplications, page, status, jobType, sort, search, searchBy } = useSelector((store) => store.applications)
+    const { applications, totalPages, totalApplications, page, status, jobType, sort, search, searchBy, isLoading } = useSelector((store) => store.applications)
     useEffect(() => {
         dispatch(getAllApplications());
     }, [status, jobType, sort, search, searchBy, page])
@@ -105,8 +106,9 @@ const Applications = () => {
                         <main>
                             <div className="flex-between">
                                 <h3>{totalApplications} Total Applications</h3>
-                                <h4>Page {page}</h4>
+                                <h4>Page <span style={{fontSize:'120%'}} >{page}</span> </h4>
                             </div>
+                            { isLoading && <Loader/> }
                             <section className="applications-grid">
                                 {applications.map((application) => {
                                     return <Jobs {...application} />

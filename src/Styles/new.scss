@@ -12,4 +12,41 @@
     height: 100%;
     padding: 1rem;
     flex: 1;
+    background-color: $primary-bg;
+    .form{
+        @include flex($direction:column, $align: initial, $gap: 1rem);
+        .text{
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: $white;
+            font-family: inherit;
+            box-shadow: $white 0px 2px 2px;
+        }
+        .label{
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .flex-radio{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .radio{
+            display: inline;
+            width: max-content;
+            margin-right: 5px;
+            cursor:pointer;
+            accent-color: $red;
+        }
+        .btn-ctn{
+            text-align: right;
+        }
+        button{
+            background-color: $green;
+            color: $white;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+    }
 }

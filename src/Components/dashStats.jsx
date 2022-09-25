@@ -1,9 +1,9 @@
 import { fetchStats } from '../Hooks/fetchAPI';
 import { useQuery } from 'react-query';
-import { ThreeDots } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
 import { clearFilters, handleInput } from '../Features/applicationSlice';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import Loader from './loader';
 
 const DashStats = () => {
     const { data, isLoading, error, isError } = useQuery('dashboardStats', fetchStats, {retry: 2});
@@ -41,20 +41,7 @@ const DashStats = () => {
     }
 
     if(isLoading){
-        return (
-            <section className='loading'>
-                <ThreeDots 
-                height="80" 
-                width="80" 
-                radius="9"
-                color="#00BFA6" 
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-                />
-            </section>
-        )
+        return <Loader/>
     }else if (isError){
         return(
             <section>
