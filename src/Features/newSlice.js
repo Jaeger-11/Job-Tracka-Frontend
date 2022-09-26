@@ -2,28 +2,22 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import useAxios from "../Hooks/useAxios";
 
 const initialState = {
-    position: "",
-    company: "",
-    location: "",
-    status: "",
-    jobType: "",
-    notes: "",
-    isLoading: false,
-    newData: {}
+    // position: "",
+    // company: "",
+    // location: "",
+    // status: "",
+    // jobType: "",
+    // notes: "",
+    status: '',
+    newData: {},
 }
 
 export const addApplication = createAsyncThunk(
     'application/addApplication',
     async ( _, thunkAPI) => {
-        // console.log(values)
         const { newData} = thunkAPI.getState().application
         const data = JSON.stringify(newData,null,2)
-        try {
-            const resp = await useAxios.post('/application', data)
-            console.log(resp.data)
-        } catch (error) {
-            return error
-        }
+        const resp = await useAxios.post('/application', data);
     }
 ) 
 
@@ -38,20 +32,25 @@ const applicationSlice = createSlice({
         setNewData: (state, {payload}) => {
             state.newData = payload;
         },
+        statusNull: (state) => {
+            state.status = ""
+        }
     },
     extraReducers:{
         [addApplication.fulfilled]:(state) => {
-            state.isLoading = false;
+            state.newData = {};
+            state.status = "success"
         },
         [addApplication.pending]:(state) => {
-            state.isLoading = true;
+            state.status = "loading";
         },
         [addApplication.rejected]:(state) => {
-            state.isLoading = false;
+            state.status = "failed";
+            state.newData = {}
         }
     }
 })
 
 
-export const {clearState, handleInput, setNewData} = applicationSlice.actions
+export const {clearState, handleInput, setNewData, statusNull} = applicationSlice.actions
 export default applicationSlice.reducer

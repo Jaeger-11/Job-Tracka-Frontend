@@ -4,11 +4,12 @@ import FixedProfile from "../Components/fixedProfile";
 import '../Styles/new.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
+import Toast from "../Components/toast";
 import { handleInput, clearState, addApplication, setNewData } from "../Features/newSlice";
 
 const NewApplication = () => {
     const dispatch = useDispatch();
-    const {  } = useSelector((state) => state.application);
+    const { status } = useSelector((state) => state.application);
 
     const handleSubmit = (data)=> {
         dispatch(setNewData(data));
@@ -17,6 +18,9 @@ const NewApplication = () => {
     
     return(
         <div className="flex-all">
+            {status === "loading" && <Toast content="Processing..." />}
+            {status === "success" && <Toast content="Added Successfully" style="success" />}
+            {status === "failed" && <Toast content="Error Occured..." style="failed" />}
             <Sidebar/>
             <div className="flex-new">
                 <Current/>

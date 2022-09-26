@@ -153,6 +153,21 @@ button{
 .toast{
   z-index: 5;
   position: absolute;
-  top: 1rem;
+  top: 3rem;
   right: 1rem;
+  background-color: $white;
+  color: $black;
+  padding:0.5rem 1.5rem;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: $fade 0px 2px 3px 2px;
+  transition: background-color 2s ease-in ;
+}
+.toast-success{
+  background-color: $green;
+  color: $white;
+}
+.toast-failed{
+  background-color: $red;
+  color: $white;
 }
