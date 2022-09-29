@@ -1,5 +1,5 @@
 import './App.scss';
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes} from "react-router-dom";
 import Landing from './Pages/Landing';
 import About from './Pages/About';
 import Signup from './Pages/Signup';
@@ -10,13 +10,10 @@ import Applications from './Pages/Applications';
 import NewApplication from './Pages/NewApplication';
 import Analytics from './Pages/Analytics';
 import Profile from './Pages/Profile';
-import { QueryClient, QueryClientProvider} from 'react-query';
-
-const queryClient = new QueryClient();
 
 function App() {
+
   return (
-    <QueryClientProvider client={queryClient}  >
     <BrowserRouter>
 
       <Routes>
@@ -32,7 +29,6 @@ function App() {
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
-    </QueryClientProvider>
   );
 }
 

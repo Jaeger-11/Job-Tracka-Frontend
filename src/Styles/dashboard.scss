@@ -4,13 +4,18 @@
     flex: 1;
     flex-direction: column;
     display: flex;
+    height: 100vmin;
     .flex-all{
         flex: 1;
     }
     &-main{
         flex: 1;
-        height: 100%;
+        // height: 100%;
         padding:0.5rem 1rem;
+        @media screen and (max-width: $laptop) {
+            overflow-y: scroll;
+            height: calc(100vh - 3.7rem);
+        }
     }
     .welcome{
         border-radius: 5px;
@@ -24,17 +29,22 @@
             flex: 1.5;
             h2{
                 font-size: 1.7rem;
+                font-family: "Noto Serif", serif;
             }
         }
         .welcome-img{
             flex: 1;
             position: relative;
             height: 100px;
+            @media screen and (max-width: $tablet){
+                display: none;
+            }
             img{
-                width: 80%;
+                width: 220px;
                 bottom: -1rem;
-                margin: auto;
                 position: absolute;
+                z-index: 5;
+                right: 1rem;
             }
         }
     }

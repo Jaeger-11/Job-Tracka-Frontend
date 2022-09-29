@@ -2,8 +2,19 @@ import React from 'react';
 import {MdLocationPin} from 'react-icons/md';
 import {BsCalendarEventFill, BsBagCheckFill} from 'react-icons/bs';
 import "../Styles/applications.scss";
+import Toast from "../Components/toast";
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteApplication } from '../Features/newSlice';
+import { getAllApplications } from '../Features/applicationSlice';
 
 const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) => {
+    const dispatch = useDispatch();
+    const { fetchStatus } = useSelector((state) => state.application)
+    const deleteJob = () => {
+        dispatch(deleteApplication(_id));
+        dispatch(getAllApplications());
+    }
+
     let bg = "pending"
     if (status === 'success'){
         bg = 'success'
@@ -16,23 +27,26 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
     } 
   return (
     <div className='jobs' key={_id}>
+        {fetchStatus === "loading" && <Toast content="Deleting..." />}
+        {fetchStatus === "success" && <Toast content="Application Deleted" style="success" />}
+        {fetchStatus === "failed" && <Toast content="Error Occured..." style="failed" />}
         <section className='jobs-sect-1'>
             <h3>{position}</h3>
             <p>{company}</p>
         </section>
-        <section className='flex-sect jobs-sect-2'>
-            <div>
-                <p className='flex-icons'>
+        <section className=' jobs-sect-2'>
+            <div className='flex-sect'>
+                <p className='flex-icon'>
                     <BsBagCheckFill/>
                     <span>{jobType}</span>
                 </p>
-                <p className='flex-icons'>
+                <p className='flex-icon'>
                     <MdLocationPin/>
                     <span>{location}</span>
                 </p>
             </div>
-            <div>
-                <p className='flex-icons'>
+            <div className='flex-sect'>
+                <p className='flex-icon'>
                     <BsCalendarEventFill/>
                     <span>{createdAt.substring(0, 10)}</span>
                 </p>
@@ -44,7 +58,7 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
         <section className="job-sect flex-between">
             <p className = "flex-icons">
                 <span className='green pointer'>Edit</span>
-                <span className='red pointer'>Delete</span>
+                <span className='red pointer' onClick={deleteJob}>Delete</span>
             </p>
             <button className={bg}>View Details</button>
         </section>

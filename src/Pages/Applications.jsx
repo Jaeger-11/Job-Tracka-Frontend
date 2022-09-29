@@ -45,6 +45,10 @@ const Applications = () => {
         } else dispatch(handleInput({name:'page', value:x}))
     }
 
+    if(totalApplications < 11){
+        dispatch(handleInput({ name: 'page',value:1}))
+    }
+
     return(
         <div className="flex-all">
             <Sidebar/>
@@ -118,7 +122,7 @@ const Applications = () => {
                             <section className="pagination">
                                 <span onClick={previousPage} className='control'>Prev</span>
                                 {rows.map((row) => {
-                                    return <span onClick={() => dispatch(handleInput({name:'page', value: row}))} className={ row === page ? 'bg-green' : 'bg-red' } >{row}</span>
+                                    return <span key={row} onClick={() => dispatch(handleInput({name:'page', value: row}))} className={ row === page ? 'bg-green' : 'bg-red' } >{row}</span>
                                 })}
                                 <span onClick={nextPage} className='control'>Next</span>
                             </section>}

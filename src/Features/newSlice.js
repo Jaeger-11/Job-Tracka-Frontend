@@ -8,7 +8,7 @@ const initialState = {
     // status: "",
     // jobType: "",
     // notes: "",
-    status: '',
+    fetchStatus: '',
     newData: {},
 }
 
@@ -20,6 +20,13 @@ export const addApplication = createAsyncThunk(
         const resp = await useAxios.post('/application', data);
     }
 ) 
+
+export const deleteApplication = createAsyncThunk(
+    'application/deleteApplication',
+    async (id, thunkAPI) => {
+        const resp = await useAxios.delete(`/application/${id}`);
+    }
+)
 
 const applicationSlice = createSlice({
     name: 'application',
@@ -33,21 +40,30 @@ const applicationSlice = createSlice({
             state.newData = payload;
         },
         statusNull: (state) => {
-            state.status = ""
-        }
+            state.fetchStatus = ""
+        },
     },
     extraReducers:{
         [addApplication.fulfilled]:(state) => {
             state.newData = {};
-            state.status = "success"
+            state.fetchStatus = "success"
         },
         [addApplication.pending]:(state) => {
-            state.status = "loading";
+            state.fetchStatus = "loading";
         },
         [addApplication.rejected]:(state) => {
-            state.status = "failed";
+            state.fetchStatus = "failed";
             state.newData = {}
-        }
+        },
+        [deleteApplication.fulfilled]:(state) => {
+            state.fetchStatus = "success"
+        },
+        [deleteApplication.pending]:(state) => {
+            state.fetchStatus = "loading"
+        },
+        [deleteApplication.rejected]:(state) => {
+            state.fetchStatus = "failed"
+        },
     }
 })
 

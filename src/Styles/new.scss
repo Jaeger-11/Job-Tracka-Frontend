@@ -4,6 +4,7 @@
 .flex-new{
     @include flex($align:initial, $direction:column);
     flex:1;
+    height: 100vmin;
     .flex-all{
         flex: 1;
     }
@@ -13,6 +14,10 @@
     padding: 1rem;
     flex: 1;
     background-color: $primary-bg;
+    h3{
+        text-align: center;
+        font-family: 'Noto Serif', serif;
+    }
     .form{
         @include flex($direction:column, $align: initial, $gap: 1rem);
         .text{

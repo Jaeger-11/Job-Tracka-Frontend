@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../Components/sidebar';
 import Current from '../Components/current';
 import FixedProfile from '../Components/fixedProfile';
+import { useNavigate } from 'react-router-dom';
 import "../Styles/dashboard.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,7 +11,10 @@ import welcome from '../Assets/undraw_welcome.svg';
 
 const Dashboard = () => {
   const { username, token } = useSelector((store) =>  store.user );
-  
+  // const navigate = useNavigate()
+  // if(!token){
+  //   navigate('/')
+  // }
   return (
     <div className='flex-all'>
         <Sidebar/>

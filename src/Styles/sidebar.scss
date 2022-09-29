@@ -9,14 +9,37 @@
     width: max-content;
     border-right: 2px solid $brdclr;
     color: $lilfade;
+    @media screen and (max-width: $tablet) {
+        position: fixed;
+        z-index: 7;
+        background-color: white;
+    }
+    .cancel{
+        display: none;
+        @media screen and (max-width: $tablet) {
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 10px; 
+            display: block; 
+        }
+    }
     &-main{
         display: flex;
         flex-direction: column;
         gap: 1rem;
         padding: 0.5rem;
-        .sidelink {
+        .active{
+            border-bottom: $black 2px double;
+            font-weight: bold;
             svg{
-            color: $fade
+                color: $black !important;
+            }
+        }
+        .sidelink {
+            transition: all 0.4s ease;
+            svg{
+            color: #808080;
             }
         }
         .sidelink:hover{

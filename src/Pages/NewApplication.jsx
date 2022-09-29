@@ -2,6 +2,7 @@ import Current from "../Components/current";
 import Sidebar from "../Components/sidebar";
 import FixedProfile from "../Components/fixedProfile";
 import '../Styles/new.scss';
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../Components/toast";
@@ -9,8 +10,12 @@ import { handleInput, clearState, addApplication, setNewData } from "../Features
 
 const NewApplication = () => {
     const dispatch = useDispatch();
-    const { status } = useSelector((state) => state.application);
-
+    const { fetchStatus } = useSelector((state) => state.application);
+    // const navigate = useNavigate()
+    // const { token} = useSelector((state) => state.user)
+    // if(!token){
+    //   navigate('/')
+    // }
     const handleSubmit = (data)=> {
         dispatch(setNewData(data));
         dispatch(addApplication());
@@ -18,9 +23,9 @@ const NewApplication = () => {
     
     return(
         <div className="flex-all">
-            {status === "loading" && <Toast content="Processing..." />}
-            {status === "success" && <Toast content="Added Successfully" style="success" />}
-            {status === "failed" && <Toast content="Error Occured..." style="failed" />}
+            {fetchStatus === "loading" && <Toast content="Processing..." />}
+            {fetchStatus === "success" && <Toast content="Added Successfully" style="success" />}
+            {fetchStatus === "failed" && <Toast content="Error Occured..." style="failed" />}
             <Sidebar/>
             <div className="flex-new">
                 <Current/>

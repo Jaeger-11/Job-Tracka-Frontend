@@ -10,20 +10,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: light) {
-  body{
-      background-color: $white;
-      color: $black;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  body{
-    background: $black;
-    color: $white;
-  }
-}
+} 
 
 body{
   font-family: "Poppins", sans-serif;
@@ -36,7 +23,7 @@ a{
 }
 .logo{
   font-size: 25px;
-  font-family: "Caveat";
+  font-family: "Caveat", cursive;
 }
 input{
   width: 100%;
@@ -53,12 +40,14 @@ button{
 }
 .green{
   color: $green;
+  transition: all 0.4s ease;
   &:hover{
     color: $red;
   }
 }
 .red{
   color: $red;
+  transition: all 0.4s ease;
   &:hover{
     color: $green;
   }
@@ -99,14 +88,47 @@ button{
 .current{
   padding: 1rem;
   border-bottom: 2px solid $brdclr;
+  background-color: $white;
+  height: 3.5rem;
+  .menu-box{
+    @include flex($gap: 1rem)
+  }
   .pathname{
     text-transform: uppercase;
     font-weight: bold;
+    font-family: "Noto Serif", serif;
   }
   .currentDate{
     font-style: italic;
   }
 }
+.menu{
+  cursor: pointer;
+  .bar{
+    width: 20px;
+    height: 2px;
+    background: #333;
+    transition: all 0.6s ease-in-out;
+    display: block;
+    margin: 5px ;
+  }
+  .first{
+    width: 25px !important;
+  }
+  .second{
+    width: 22.5px !important;
+  }
+  .firstChange{
+    width: 15px;
+  }
+  .secondChange{
+    width: 20px;
+  }
+  .thirdChange{
+    width: 25px;
+  }
+}
+
 
 // STYLING OF FIXED PROFILE
 .fixed-profile{
@@ -116,6 +138,9 @@ button{
   padding: 0.5rem 1rem;
   min-width: 250px;
   max-width: 25%;
+  @media screen and (max-width: $laptop) {
+    display: none;
+  }
   section{
     @include flex($direction:column, $gap:2rem, $align:initial);
   }
@@ -160,8 +185,8 @@ button{
   padding:0.5rem 1.5rem;
   font-weight: 600;
   border-radius: 5px;
-  box-shadow: $fade 0px 2px 3px 2px;
-  transition: background-color 2s ease-in ;
+  box-shadow: $fade 0px 2px 3px;
+  transition: all 1s ease-in ;
 }
 .toast-success{
   background-color: $green;

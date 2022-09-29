@@ -3,16 +3,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 var user = JSON.parse(window.localStorage.getItem('jobTrackaUser')) || '';
 
 function capitalizeFirstLetter(str) {
-    // converting first letter to uppercase
     const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
     return capitalized;
 }
-const User = capitalizeFirstLetter(user.username)
+let User = ""
+if (user){
+    User = capitalizeFirstLetter(user)
+}
 
 const initialState = {
-    username: User || '',
+    username: User,
     token: `Bearer ${user.token}` || '',
     isLoading: true,
+    showSidebar: true,
 }
 
 const userSlice = createSlice({
@@ -22,19 +25,20 @@ const userSlice = createSlice({
         logOut : (state) => {
             state.username = "";
             state.token ="";
+            window.localStorage.removeItem('jobTrackaUser')
         },
         userIn: (state, action) => {
             // console.log(action.payload);
             state.username = action.payload.username;
             state.token = action.payload.token;
         },
+        showSide: (state, {payload}) => {
+            state.showSidebar = payload
+        }
     }
 })
 
-// axios.defaults.headers.post['authorization'] = userSlice.reducer
 
-console.log(userSlice.reducer)
-
-export const {logOut, userIn} = userSlice.actions
+export const {logOut, userIn, showSide} = userSlice.actions
 
 export default userSlice.reducer;
