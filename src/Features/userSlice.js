@@ -8,12 +8,12 @@ function capitalizeFirstLetter(str) {
 }
 let User = ""
 if (user){
-    User = capitalizeFirstLetter(user)
+    User = capitalizeFirstLetter(user.username)
 }
 
 const initialState = {
     username: User,
-    token: `Bearer ${user.token}` || '',
+    token: user.token || '',
     isLoading: true,
     showSidebar: true,
 }
@@ -23,12 +23,11 @@ const userSlice = createSlice({
     initialState,
     reducers:{
         logOut : (state) => {
+            window.localStorage.clear();
             state.username = "";
             state.token ="";
-            window.localStorage.removeItem('jobTrackaUser')
         },
         userIn: (state, action) => {
-            // console.log(action.payload);
             state.username = action.payload.username;
             state.token = action.payload.token;
         },

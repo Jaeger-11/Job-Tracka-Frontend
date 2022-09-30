@@ -57,9 +57,11 @@ button{
 }
 .bg-green{
   background-color: $green;
+  transition: all 0.4s ease;
 }
 .bg-red{
   background-color: $red;
+  transition: all 0.4s ease;
 }
 .flex-icons{
   display: flex;
@@ -134,9 +136,8 @@ button{
 .fixed-profile{
   background-color: $primary-bg;
   border-left: $brdclr 2px solid;
-  height: 100%;
   padding: 0.5rem 1rem;
-  min-width: 250px;
+  min-width: 270px;
   max-width: 25%;
   @media screen and (max-width: $laptop) {
     display: none;

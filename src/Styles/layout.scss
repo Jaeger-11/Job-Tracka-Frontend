@@ -1,0 +1,19 @@
+@import './variable';
+@import './base';
+
+.layout{
+    @include flex($align: initial);
+    .container{
+        height: 100%;
+        flex: 1;
+        @include flex($direction: column, $align: initial);
+        .main-content{
+            min-height: calc(100vh - 3.5rem);
+            flex: 1;
+            @include flex($align:initial);
+            .content{
+                flex: 1;
+            }
+        }
+    }
+}

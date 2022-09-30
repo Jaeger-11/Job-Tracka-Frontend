@@ -1,18 +1,9 @@
 @import "./variable";
 @import "./base";
 
-.flex-new{
-    @include flex($align:initial, $direction:column);
-    flex:1;
-    height: 100vmin;
-    .flex-all{
-        flex: 1;
-    }
-}
 .new{
     height: 100%;
     padding: 1rem;
-    flex: 1;
     background-color: $primary-bg;
     h3{
         text-align: center;

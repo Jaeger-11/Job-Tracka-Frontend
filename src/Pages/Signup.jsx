@@ -22,7 +22,7 @@ const Signup = () => {
             const user  = JSON.parse(window.localStorage.getItem('jobTrackaUser'))
             if (user){
                 dispatch(userIn(user))
-                navigate('/dashboard')
+                navigate('/')
             }
         } catch (error) {
             setMessage(error.response.data.msg)

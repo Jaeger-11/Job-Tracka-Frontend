@@ -1,12 +1,8 @@
 import useAxios from "./useAxios";
 
 export const fetchStats = async () => {
-    try {
-        const { data } = await useAxios.get('/application/showstats')
-        return data
-    } catch (error) {
-        throw error
-    }
+    const { data } = await useAxios.get('/application/showstats')
+    return data 
 }
 
 export const fetchGoals = async () => {

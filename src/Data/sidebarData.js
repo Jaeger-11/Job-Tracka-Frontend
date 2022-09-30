@@ -5,7 +5,7 @@ const sidebarData = [
     {
         id: 1,
         name:"Dashboard",
-        link:"/dashboard",
+        link:"/",
         icon: <MdOutlineDashboard/>,
     },
     {

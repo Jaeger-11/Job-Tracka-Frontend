@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { showSide } from '../Features/userSlice';
+import { useEffect } from 'react';
 
 const Current = () => {
   const dispatch = useDispatch();
-  const { showSidebar } = useSelector((state) => state.user)
+  const { showSidebar, token, username } = useSelector((state) => state.user)
   const [cDate, setcDate] = useState();
-  const pathname = useLocation().pathname
+  let pathname = useLocation().pathname;
+  if (pathname.startsWith("/applications/")){
+    pathname = "Application"
+  }
   let currentDate = new Date().toLocaleString();
   setInterval(() => {
       currentDate = new Date().toLocaleString();
       setcDate(currentDate)
   }, 1000);
+  const navigate = useNavigate();
+    useEffect(()=>{
+        if( !token || !username ){
+            navigate('/home')
+        }
+    })
 
   const toggleSidebar = () => {
     dispatch(showSide(!showSidebar));

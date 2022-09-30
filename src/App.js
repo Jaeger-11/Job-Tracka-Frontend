@@ -10,6 +10,9 @@ import Applications from './Pages/Applications';
 import NewApplication from './Pages/NewApplication';
 import Analytics from './Pages/Analytics';
 import Profile from './Pages/Profile';
+import Layout from './Components/layout';
+import Protected from './Components/protected';
+import Application from './Pages/Application';
 
 function App() {
 
@@ -17,15 +20,27 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path='/' element={<Landing/>} />
+        <Route path="/" element={
+          <Protected>
+            <Layout/>
+          </Protected>
+        }>
+          <Route index element={<Dashboard/>} />
+          <Route path='/applications' element={<Applications/>}/>
+          <Route path='/applications/:id' element={<Application/>}/>
+          <Route path='/new' element={<NewApplication/>} />
+          <Route path='/analytics' element={<Analytics/>} />
+        </Route>
+
+        <Route path='/home' element={<Landing/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path='/applications' element={<Applications/>} />
-        <Route path='/new' element={<NewApplication/>} />
-        <Route path='/analytics' element={<Analytics/>} />
-        <Route path='/profile' element={<Profile/>} />
+        <Route path='/profile' element={
+          <Layout>
+            <Profile/>
+          </Layout>
+        } />
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>

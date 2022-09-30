@@ -1,86 +1,79 @@
 @import "./variable";
-
-.dashboard{
-    flex: 1;
-    flex-direction: column;
+.dashboard-main{
     display: flex;
-    height: 100vmin;
-    .flex-all{
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding:0.5rem 1rem;
+    @media screen and (max-width: $laptop) {
+        overflow-y: scroll;
+        height: calc(100vh - 3.7rem);
+    }
+}
+.welcome{
+    border-radius: 5px;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    background-color: $primary-bg;
+    width: 100%;
+    &-text{
+        flex: 1.5;
+        font-size: 0.85rem;
+        h2{
+            font-size: 1.7rem;
+            font-family: "Noto Serif", serif;
+        }
+    }
+    .welcome-img{
         flex: 1;
-    }
-    &-main{
-        flex: 1;
-        // height: 100%;
-        padding:0.5rem 1rem;
-        @media screen and (max-width: $laptop) {
-            overflow-y: scroll;
-            height: calc(100vh - 3.7rem);
+        position: relative;
+        height: 100px;
+        @media screen and (max-width: $tablet){
+            display: none;
         }
-    }
-    .welcome{
-        border-radius: 5px;
-        display: flex;
-        gap: 1rem;
-        padding: 1rem;
-        justify-content: center;
-        background-color: $primary-bg;
-        width: 100%;
-        &-text{
-            flex: 1.5;
-            h2{
-                font-size: 1.7rem;
-                font-family: "Noto Serif", serif;
-            }
-        }
-        .welcome-img{
-            flex: 1;
-            position: relative;
-            height: 100px;
-            @media screen and (max-width: $tablet){
-                display: none;
-            }
-            img{
-                width: 220px;
-                bottom: -1rem;
-                position: absolute;
-                z-index: 5;
-                right: 1rem;
-            }
-        }
-    }
-    .dashstats{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-        gap: 1rem;
-        width: 100%;
-        &-outer{
-            background-color: $white ;
-            position: relative;
-        }
-        &-inner{
-            padding: 1rem;
-            border: 2px solid green;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            h3{
-                font-weight: normal;
-            }
-            p{
-                font-size: 32px;
-                text-align: right;
-                padding: 0;
-            }
-        }
-        .outer{
-            height: 100%;
-            bottom: 0.5rem;
-            width: 100%;
+        img{
+            width: 220px;
+            bottom: -1rem;
             position: absolute;
-            background-color: $primary-bg;
-            z-index: -1;
-            right: 0.5rem;
+            z-index: 5;
+            right: 1rem;
         }
+    }
+}
+.dashstats{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    &-outer{
+        background-color: $white ;
+        position: relative;
+    }
+    &-inner{
+        padding: 1rem;
+        border: 2px solid green;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        h3{
+            font-weight: normal;
+        }
+        p{
+            font-size: 32px;
+            text-align: right;
+            padding: 0;
+        }
+    }
+    .outer{
+        height: 100%;
+        bottom: 0.5rem;
+        width: 100%;
+        position: absolute;
+        background-color: $primary-bg;
+        z-index: -1;
+        right: 0.5rem;
     }
 }

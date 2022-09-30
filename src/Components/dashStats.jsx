@@ -4,11 +4,20 @@ import { useDispatch } from 'react-redux';
 import { clearFilters, handleInput } from '../Features/applicationSlice';
 import { useNavigate } from "react-router-dom";
 import Loader from './loader';
+import Toast from './toast';
+import { logOut } from '../Features/userSlice';
 
 const DashStats = () => {
     const { data, isLoading, error, isError } = useQuery('dashboardStats', fetchStats, {retry: 2});
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    if(isError && error && error.response.status === 401){
+        // dispatch(logOut());
+        return(
+            <Toast content="Unauthenticated, Logging Out...." />
+        )
+    }
 
     const totalClick = () => {
         dispatch(clearFilters());

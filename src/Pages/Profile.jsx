@@ -3,17 +3,9 @@ import Sidebar from "../Components/sidebar";
 
 const Profile = () => {
   return (
-    <div className="flex-all">
-            <Sidebar/>
-            <div className="flex-one">
-                <div className="one">
-                    <Current/>
-                    <main className="new">
-                        
-                    </main>
-                </div>
-            </div>
-        </div>
+    <div >
+         PROFILE   
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import undrawlanding from "../Assets/undraw_job_offers.svg";
 import { FaTimes } from "react-icons/fa";
 import { MdArrowBackIosNew } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
-import apiClient from "../Hooks/useAxios";
+import useAxios from "../Hooks/useAxios";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from "react-redux";
 import { logOut, userIn } from "../Features/userSlice";
@@ -16,13 +16,16 @@ const Login = () => {
 
     const signIn = async (values) => {
         try {
+            setMessage('Checking....')
             dispatch(logOut())
-            const response = await apiClient.post('/auth/login', values)
+            const response = await useAxios.post('/auth/login', values)
             window.localStorage.setItem('jobTrackaUser', JSON.stringify(response.data));
             const user  = JSON.parse(window.localStorage.getItem('jobTrackaUser'))
             if (user){
+                setMessage('Redirecting....')
                 dispatch(userIn(user))
-                navigate('/dashboard')
+                navigate('/')
+                setMessage(null)
             }
         } catch (error) {
             setMessage(error.response.data.msg)

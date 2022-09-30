@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {MdLocationPin} from 'react-icons/md';
 import {BsCalendarEventFill, BsBagCheckFill} from 'react-icons/bs';
 import "../Styles/applications.scss";
@@ -57,7 +58,7 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
         </section>
         <section className="job-sect flex-between">
             <p className = "flex-icons">
-                <span className='green pointer'>Edit</span>
+                <Link to={_id} className='green pointer'>Edit</Link>
                 <span className='red pointer' onClick={deleteJob}>Delete</span>
             </p>
             <button className={bg}>View Details</button>

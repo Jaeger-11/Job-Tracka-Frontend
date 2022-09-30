@@ -1,14 +1,10 @@
 @import "./variable";
 @import "./base";
 
-.flex-applications{
-    @include flex($align:initial, $direction:column);
-    flex:1;
-}
+
 .applications{
     padding: 1rem;
     background-color: $primary-bg;
-    flex:1;
     overflow-y: scroll;
     height: calc(100vh - 3.7rem);
     &-grid{
