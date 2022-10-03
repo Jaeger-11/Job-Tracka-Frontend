@@ -5,7 +5,7 @@
     justify-content: space-between;
     height: 100%;
     padding:0.5rem 1rem;
-    @media screen and (max-width: $laptop) {
+    @media screen and (max-width: $desktop) {
         overflow-y: scroll;
         height: calc(100vh - 3.7rem);
     }
@@ -30,7 +30,7 @@
         flex: 1;
         position: relative;
         height: 100px;
-        @media screen and (max-width: $tablet){
+        @media screen and (max-width: $laptop){
             display: none;
         }
         img{
@@ -39,6 +39,10 @@
             position: absolute;
             z-index: 5;
             right: 1rem;
+            @media screen and (max-width: 900px){
+                width:200px;
+                right: 0.5rem;
+            }
         }
     }
 }

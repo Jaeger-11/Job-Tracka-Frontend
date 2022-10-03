@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 var user = JSON.parse(window.localStorage.getItem('jobTrackaUser')) || '';
 
-function capitalizeFirstLetter(str) {
+const capitalizeFirstLetter= (str) => {
     const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
     return capitalized;
 }
