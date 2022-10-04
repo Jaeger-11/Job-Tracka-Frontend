@@ -3,9 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../Components/toast";
 import { addApplication, setNewData } from "../Features/newSlice";
+import { useNavigate } from 'react-router-dom';
 
 const NewApplication = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { fetchStatus } = useSelector((state) => state.application);
     const handleSubmit = (data)=> {
         dispatch(setNewData(data));
@@ -42,10 +44,10 @@ const NewApplication = () => {
                     }
                     return errors;
                 }}
-                onSubmit={ (values) => {
+                onSubmit={ (values, { resetForm }) => {
                     const data = JSON.stringify(values,null,2)
-                    // alert(data)
                     handleSubmit(values)
+                    resetForm()
                 }}
                 >
                     <Form className="form">

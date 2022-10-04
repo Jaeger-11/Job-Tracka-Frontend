@@ -2,12 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import useAxios from "../Hooks/useAxios";
 
 const initialState = {
-    // position: "",
-    // company: "",
-    // location: "",
-    // status: "",
-    // jobType: "",
-    // notes: "",
     fetchStatus: '',
     newData: {},
 }

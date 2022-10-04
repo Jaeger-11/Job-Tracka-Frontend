@@ -11,7 +11,7 @@ const Toast = ({content, icon, style}) => {
         if(fetchStatus && fetchStatus !== 'loading'){
             const timer = setTimeout(() => {
                 dispatch(statusNull());
-            }, 6000)
+            }, 3000)
             return () => clearTimeout(timer)
         }
     },[fetchStatus])

@@ -6,7 +6,7 @@ import "../Styles/applications.scss";
 import Toast from "../Components/toast";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteApplication } from '../Features/newSlice';
-import { getAllApplications } from '../Features/applicationSlice';
+import { getAllApplications, getApplication } from '../Features/applicationSlice';
 
 const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) => {
     const dispatch = useDispatch();
@@ -14,6 +14,9 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
     const deleteJob = () => {
         dispatch(deleteApplication(_id));
         dispatch(getAllApplications());
+    }
+    const viewDetails = (id) => {
+        dispatch(getApplication(id))
     }
 
     let bg = "pending"
@@ -43,7 +46,10 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
                 </p>
                 <p className='flex-icon'>
                     <MdLocationPin/>
-                    <span>{location}</span>
+                    <span>
+                        {location.length > 20 ? location.substring(0,15) : location}
+                        {location.length > 20 && '...'}
+                    </span>
                 </p>
             </div>
             <div className='flex-sect'>
@@ -61,7 +67,7 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
                 <Link to={_id} className='green pointer'>Edit</Link>
                 <span className='red pointer' onClick={deleteJob}>Delete</span>
             </p>
-            <button className={bg}>View Details</button>
+            <Link to={_id}><button className={bg} onClick={() => viewDetails(_id)} >View Details</button></Link>
         </section>
     </div>
   )
