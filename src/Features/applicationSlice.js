@@ -14,7 +14,6 @@ const initialState = {
     totalPages: 1,
     page: 1,
     applications: [],
-    application: [],
     isLoading: false,
     ...filterState,
 }
@@ -33,14 +32,6 @@ export const getAllApplications = createAsyncThunk(
         } catch (error) {
             console.log(error)
         }
-    }
-)
-
-export const getApplication = createAsyncThunk(
-    'applications/getApplication',
-    async(id,thunkAPI) => {
-        const resp = await useAxios.get(`/application/${id}`)
-        return resp.data
     }
 )
 
@@ -66,10 +57,6 @@ const applicationsSlice = createSlice({
         [getAllApplications.rejected]: (state) => {
             state.isLoading = false
         },
-        [getApplication.fulfilled]: (state, {payload}) => {
-            console.log(payload)
-            state.application = payload.application;
-        }
     }
 })
 

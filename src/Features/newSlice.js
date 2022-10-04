@@ -4,7 +4,16 @@ import useAxios from "../Hooks/useAxios";
 const initialState = {
     fetchStatus: '',
     newData: {},
+    application: [],
 }
+
+export const getApplication = createAsyncThunk(
+    'application/getApplication',
+    async(id,thunkAPI) => {
+        const resp = await useAxios.get(`/application/${id}`)
+        return resp.data
+    }
+)
 
 export const addApplication = createAsyncThunk(
     'application/addApplication',
@@ -14,6 +23,15 @@ export const addApplication = createAsyncThunk(
         const resp = await useAxios.post('/application', data);
     }
 ) 
+
+export const editApplication = createAsyncThunk(
+    'application/editApplication',
+    async(_, thunkAPI) => {
+        const { newData } = thunkAPI.getState().application
+        const data = JSON.stringify(newData,null,2)
+        const resp = await useAxios.patch('/application', data)
+    }
+)
 
 export const deleteApplication = createAsyncThunk(
     'application/deleteApplication',
@@ -36,6 +54,9 @@ const applicationSlice = createSlice({
         statusNull: (state) => {
             state.fetchStatus = ""
         },
+        clearApplication: (state) => {
+            state.application = []
+        }
     },
     extraReducers:{
         [addApplication.fulfilled]:(state) => {
@@ -58,9 +79,25 @@ const applicationSlice = createSlice({
         [deleteApplication.rejected]:(state) => {
             state.fetchStatus = "failed"
         },
+        [getApplication.fulfilled]: (state, {payload}) => {
+            state.application = payload.application;
+        },
+        [editApplication.fulfilled]:(state) => {
+            state.newData = {};
+            state.fetchStatus = "success";
+            state.application = [];
+        },
+        [editApplication.pending]:(state) => {
+            state.fetchStatus = "loading";
+        },
+        [editApplication.rejected]:(state) => {
+            state.fetchStatus = "failed";
+            state.newData = {};
+            state.application = [];
+        },
     }
 })
 
 
-export const {clearState, handleInput, setNewData, statusNull} = applicationSlice.actions
+export const {clearState, handleInput, setNewData, statusNull, clearApplication} = applicationSlice.actions
 export default applicationSlice.reducer

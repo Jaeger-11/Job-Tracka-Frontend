@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import '../Styles/applications.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import {BsDashLg} from 'react-icons/bs';
@@ -9,10 +9,8 @@ import Toast from '../Components/toast';
 
 const Application = () => {
     const navigate = useNavigate();
-    // let { id } = useParams();
     const dispatch = useDispatch()
-    const { application } = useSelector((state) => state.applications );
-    const { fetchStatus } = useSelector((state) => state.application)
+    const { fetchStatus, application } = useSelector((state) => state.application)
     const { position, company, location, status, jobType, createdAt, updatedAt, notes, _id } = application;
     const deleteJob = () => {
       dispatch(deleteApplication(_id));

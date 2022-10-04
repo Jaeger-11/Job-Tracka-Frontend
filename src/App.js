@@ -13,6 +13,7 @@ import Profile from './Pages/Profile';
 import Layout from './Components/layout';
 import Protected from './Components/protected';
 import Application from './Pages/Application';
+import EditApplication from './Pages/EditApplication';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<Dashboard/>} />
           <Route path='/applications' element={<Applications/>}/>
           <Route path='/applications/:id' element={<Application/>}/>
+          <Route path='/applications/edit' element={<EditApplication/>} />
           <Route path='/new' element={<NewApplication/>} />
           <Route path='/analytics' element={<Analytics/>} />
         </Route>

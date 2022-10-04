@@ -2,32 +2,39 @@ import '../Styles/new.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../Components/toast";
-import { addApplication, setNewData } from "../Features/newSlice";
+import { editApplication, setNewData, clearApplication } from "../Features/newSlice";
+import { Link, useNavigate } from 'react-router-dom';
 
-const NewApplication = () => {
+const EditApplication = () => {
     const dispatch = useDispatch();
-    const { fetchStatus } = useSelector((state) => state.application);
-    const handleSubmit = (data)=> {
-        dispatch(setNewData(data));
-        dispatch(addApplication());
+    const navigate = useNavigate();
+    const { fetchStatus, application } = useSelector((state) => state.application);
+    const { position, company, status, jobType, notes, location } = application;
+    console.log(application);
+
+    const handleSubmit = ( values ) => {
+        setNewData(values);
+        dispatch(editApplication());
     }
-    
-    return(
+
+  return (
+    <div>
         <main className="new">
+            <Link to='/applications' className='red' onClick={() => dispatch(clearApplication())} > {'< Back'} </Link>
             {fetchStatus === "loading" && <Toast content="Processing..." />}
-            {fetchStatus === "success" && <Toast content="Added Successfully" style="success" />}
+            {fetchStatus === "success" && <Toast content="Edited Successfully" style="success" />}
             {fetchStatus === "failed" && <Toast content="Error Occured..." style="failed" />}
 
-            <h3>Add New Application</h3>
+            <h3>Edit Application</h3>
             <section>
                 <Formik
                 initialValues = {{ 
-                    position:'', 
-                    company:'', 
-                    status:'pending', 
-                    jobType:'full-time',
-                    notes:'No Additional Notes',
-                    location:'Not Stated',
+                    position: position , 
+                    company:company, 
+                    status:status, 
+                    jobType:jobType,
+                    notes:notes,
+                    location:location,
                 }}
                 validate={values => {
                     const errors = {};
@@ -43,7 +50,6 @@ const NewApplication = () => {
                     return errors;
                 }}
                 onSubmit={ (values, { resetForm }) => {
-                    const data = JSON.stringify(values,null,2)
                     handleSubmit(values)
                     resetForm()
                 }}
@@ -129,7 +135,8 @@ const NewApplication = () => {
                 </Formik>
             </section>
         </main>
-    )
+    </div>
+  )
 }
 
-export default NewApplication;
+export default EditApplication
