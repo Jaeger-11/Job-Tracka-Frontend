@@ -26,10 +26,9 @@ export const addApplication = createAsyncThunk(
 
 export const editApplication = createAsyncThunk(
     'application/editApplication',
-    async(_, thunkAPI) => {
-        const { newData } = thunkAPI.getState().application
-        const data = JSON.stringify(newData,null,2)
-        const resp = await useAxios.patch('/application', data)
+    async({_id, values}, thunkAPI) => {
+        const data = JSON.stringify(values,null,2)
+        const resp = await useAxios.patch(`/application/${_id}`, data)
     }
 )
 

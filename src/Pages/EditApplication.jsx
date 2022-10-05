@@ -3,18 +3,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../Components/toast";
 import { editApplication, setNewData, clearApplication } from "../Features/newSlice";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const EditApplication = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { fetchStatus, application } = useSelector((state) => state.application);
-    const { position, company, status, jobType, notes, location } = application;
-    console.log(application);
+    const { position, company, status, jobType, notes, location, _id } = application;
 
     const handleSubmit = ( values ) => {
-        setNewData(values);
-        dispatch(editApplication());
+        dispatch(editApplication({_id, values}));
     }
 
   return (
@@ -27,7 +24,8 @@ const EditApplication = () => {
 
             <h3>Edit Application</h3>
             <section>
-                <Formik
+            <Formik 
+                enableReinitialize
                 initialValues = {{ 
                     position: position , 
                     company:company, 
@@ -49,9 +47,8 @@ const EditApplication = () => {
                     }
                     return errors;
                 }}
-                onSubmit={ (values, { resetForm }) => {
+                onSubmit={ (values) => {
                     handleSubmit(values)
-                    resetForm()
                 }}
                 >
                     <Form className="form">
@@ -139,4 +136,4 @@ const EditApplication = () => {
   )
 }
 
-export default EditApplication
+export default EditApplication;

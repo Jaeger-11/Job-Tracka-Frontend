@@ -14,6 +14,7 @@ const Applications = () => {
 
     const handleClear = () => {
         dispatch(clearFilters());
+        dispatch(getAllApplications());
     }
 
     const handleChange = (e)=> {

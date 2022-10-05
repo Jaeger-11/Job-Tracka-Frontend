@@ -16,9 +16,6 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
         dispatch(deleteApplication(_id));
         dispatch(getAllApplications());
     }
-    // useEffect(() => {
-    //     dispatch(getApplication(_id))
-    // },[_id])
     const viewDetails = () => {
         dispatch(getApplication(_id))
     }

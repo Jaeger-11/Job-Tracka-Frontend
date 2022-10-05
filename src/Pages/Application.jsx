@@ -4,7 +4,7 @@ import '../Styles/applications.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import {BsDashLg} from 'react-icons/bs';
 import { getAllApplications } from '../Features/applicationSlice';
-import { deleteApplication } from '../Features/newSlice';
+import { deleteApplication, getApplication } from '../Features/newSlice';
 import Toast from '../Components/toast';
 
 const Application = () => {
@@ -16,7 +16,12 @@ const Application = () => {
       dispatch(deleteApplication(_id));
       dispatch(getAllApplications());
       navigate('/applications')
-  }
+    }
+    const editDetails = () => {
+      dispatch(getApplication(_id))
+      navigate('/applications/edit')
+    }
+
 
   return (
     <div className='application'>
@@ -34,11 +39,11 @@ const Application = () => {
         <p className='flex-icons'> <span>jobType</span> <BsDashLg/> {jobType} </p>
         <p className='flex-icons'> <span>notes</span> <BsDashLg/> {notes} </p>
         <div className='flex-between'>
-          <p> <span>Application Date :</span> {createdAt.substring(0, 10)} </p>
-          <p> <span>Last Updated :</span> {updatedAt.substring(0, 10)} </p>
+          <p> <span>Application Date :</span> { createdAt ?  createdAt.substring(0, 10) : ""} </p>
+          <p> <span>Last Updated :</span> {updatedAt ? updatedAt.substring(0, 10) : ""} </p>
         </div>
         <div className='application-btn'>
-          <button className='edit'>Edit</button>
+          <button className='edit' onClick={editDetails}>Edit</button>
           <button className='del' onClick={deleteJob}>Delete</button>
         </div>
       </section>
