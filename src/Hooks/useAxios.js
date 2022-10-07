@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const useAxios =  axios.create({
-    baseURL: "http://localhost:5000/api/v1",
+    baseURL: "https://job-tracka.herokuapp.com/api/v1",
     headers:{
         "content-type": "application/json"
     }

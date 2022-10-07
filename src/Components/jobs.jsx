@@ -5,9 +5,8 @@ import {BsCalendarEventFill, BsBagCheckFill} from 'react-icons/bs';
 import "../Styles/applications.scss";
 import Toast from "../Components/toast";
 import { useSelector, useDispatch } from 'react-redux';
-import { clearApplication, deleteApplication, getApplication } from '../Features/newSlice';
+import { deleteApplication, getApplication } from '../Features/newSlice';
 import { getAllApplications } from '../Features/applicationSlice';
-import { useEffect } from 'react';
 
 const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) => {
     const dispatch = useDispatch();

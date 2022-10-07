@@ -2,7 +2,7 @@ import '../Styles/new.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../Components/toast";
-import { editApplication, setNewData, clearApplication } from "../Features/newSlice";
+import { editApplication, clearApplication } from "../Features/newSlice";
 import { Link } from 'react-router-dom';
 
 const EditApplication = () => {
