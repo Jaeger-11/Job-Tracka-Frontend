@@ -4,30 +4,27 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {MdLogout} from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { showSide, logOut, showNavbar } from "../Features/userSlice";
+import { showNavbar, logOut } from "../Features/userSlice";
 
-const Sidebar = () => {
+const MobileNavbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const pathname = useLocation().pathname
 
-    const { showSidebar, showMobileSidebar } = useSelector((state) => state.user)
+    const { showMobileSidebar } = useSelector((state) => state.user)
 
     const sideNavigate = (link) => {
         navigate(link)
-    }
-    const navigateClose = (link) => {
-        navigate(link);
-        dispatch(showNavbar(false));
+        dispatch(showNavbar(false))
     }
 
-    if (showSidebar){
+    if (showMobileSidebar){
         return (
-            <aside className="sidebar desktop">
-                <label className='menu cancel' onClick={() => dispatch(showSide(false))}> 
-                    <span className={`${showSidebar ? 'firstChange' : 'first'} bar`}></span>
-                    <span className={`${showSidebar ? 'secondChange' : 'second'} bar`}></span>
-                    <span className={`bar ${showSidebar && 'thirdChange'}`}></span>
+            <aside className="sidebar mobile">
+                <label className='menu cancel' onClick={() => dispatch(showNavbar(false))}> 
+                    <span className={`${showMobileSidebar ? 'firstChange' : 'first'} bar`}></span>
+                    <span className={`${showMobileSidebar ? 'secondChange' : 'second'} bar`}></span>
+                    <span className={`bar ${showMobileSidebar && 'thirdChange'}`}></span>
                 </label>
                 <h3 className="logo">JobTracka</h3>                  
         
@@ -56,4 +53,4 @@ const Sidebar = () => {
   
 }
 
-export default Sidebar;
+export default MobileNavbar;

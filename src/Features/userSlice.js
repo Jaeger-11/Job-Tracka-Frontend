@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 
 var user = JSON.parse(window.localStorage.getItem('jobTrackaUser')) || '';
 
@@ -16,6 +16,7 @@ const initialState = {
     token: user.token || '',
     isLoading: true,
     showSidebar: true,
+    showMobileSidebar:false,
 }
 
 const userSlice = createSlice({
@@ -33,11 +34,14 @@ const userSlice = createSlice({
         },
         showSide: (state, {payload}) => {
             state.showSidebar = payload
+        },
+        showNavbar: (state,{payload}) => {
+            state.showMobileSidebar = payload
         }
     }
 })
 
 
-export const {logOut, userIn, showSide} = userSlice.actions
+export const {logOut, userIn, showSide, showNavbar} = userSlice.actions
 
 export default userSlice.reducer;

@@ -103,6 +103,11 @@ button{
   .currentDate{
     font-style: italic;
   }
+  @media screen and (max-width:$tablet) {
+    .currentDate{
+      font-size: 0.8rem;
+    }
+  }
 }
 .menu{
   cursor: pointer;
@@ -178,7 +183,7 @@ button{
 // STYLING OF TOAST COMPONENT
 .toast{
   z-index: 5;
-  position: absolute;
+  position: fixed;
   top: 3rem;
   right: 1rem;
   background-color: $white;

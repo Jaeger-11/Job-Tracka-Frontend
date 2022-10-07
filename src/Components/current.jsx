@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { showSide } from '../Features/userSlice';
+import { showSide, showNavbar } from '../Features/userSlice';
 import { useEffect } from 'react';
 
 const Current = () => {
   const dispatch = useDispatch();
-  const { showSidebar, token, username } = useSelector((state) => state.user)
+  const { showSidebar, token, username} = useSelector((state) => state.user)
   const [cDate, setcDate] = useState();
   let pathname = useLocation().pathname;
   if (pathname.startsWith("/applications/")){
@@ -26,6 +26,7 @@ const Current = () => {
 
   const toggleSidebar = () => {
     dispatch(showSide(!showSidebar));
+    dispatch(showNavbar(true))
   }
 
   return (

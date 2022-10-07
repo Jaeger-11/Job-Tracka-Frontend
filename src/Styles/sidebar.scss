@@ -1,6 +1,7 @@
 @import "./variable";
 
 .sidebar{
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,11 +10,6 @@
     width: max-content;
     border-right: 2px solid $brdclr;
     color: $lilfade;
-    @media screen and (max-width: $tablet) {
-        position: fixed;
-        z-index: 7;
-        background-color: white;
-    }
     .cancel{
         display: none;
         @media screen and (max-width: $tablet) {
@@ -29,6 +25,7 @@
         flex-direction: column;
         gap: 1rem;
         padding: 0.5rem;
+        width: max-content;
         .active{
             border-bottom: $black 2px double;
             font-weight: bold;
@@ -49,4 +46,17 @@
         }
     }
 }
-
+.mobile{
+    display: none;
+}
+@media screen and (max-width: $tablet) {
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: flex;
+        position: fixed;
+        z-index: 7;
+        background-color: white;
+    }
+}

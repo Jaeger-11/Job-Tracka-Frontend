@@ -24,7 +24,7 @@
             font-weight: 700;
         }
         .flex-inputs{
-            @include flex($justify:space-between, $align:initial);
+            @include flex($gap: 3rem, $align:initial);
             flex-wrap: wrap;
             .flex-radio{
                 @include flex($gap: 50px, $align:initial);
@@ -56,7 +56,16 @@
         }
         .textarea{
             @extend .text;
-            min-width: 450px;
+            width: 450px;
+            @media screen and (max-width: $tablet) {
+                width: 100%;
+                min-width: none;
+            }
         }
+    }
+}
+@media screen and (max-width: $tablet) {
+    .new{
+        height: max-content;
     }
 }
