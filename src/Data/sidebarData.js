@@ -34,8 +34,8 @@ const sidebarData = [
     },
     {
         id: 6,
-        name:"About",
-        link:"/about",
+        name:"Resources",
+        link:"/resources",
         icon:<MdOutlineQuestionAnswer/> ,
     },
 

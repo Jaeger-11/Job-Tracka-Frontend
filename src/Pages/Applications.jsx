@@ -11,6 +11,9 @@ const Applications = () => {
     useEffect(() => {
         dispatch(getAllApplications());
     }, [status, jobType, sort, search, searchBy, page])
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [page]);
 
     const handleClear = () => {
         dispatch(clearFilters());

@@ -14,6 +14,7 @@ import Layout from './Components/layout';
 import Protected from './Components/protected';
 import Application from './Pages/Application';
 import EditApplication from './Pages/EditApplication';
+import Resources from './Pages/Resources';
 
 function App() {
 
@@ -32,17 +33,14 @@ function App() {
           <Route path='/applications/edit' element={<EditApplication/>} />
           <Route path='/new' element={<NewApplication/>} />
           <Route path='/analytics' element={<Analytics/>} />
+          <Route path='/profile' element={<Profile/>} />
+          <Route path='/resources' element={<Resources/>} />
         </Route>
 
         <Route path='/home' element={<Landing/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/profile' element={
-          <Layout>
-            <Profile/>
-          </Layout>
-        } />
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>

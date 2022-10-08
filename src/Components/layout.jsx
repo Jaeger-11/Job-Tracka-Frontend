@@ -5,9 +5,16 @@ import FixedProfile from './fixedProfile';
 import '../Styles/layout.scss';
 import { Outlet } from 'react-router-dom';
 import MobileNavbar from './mobileNavbar';
+import { useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+  
 
 const Layout = () => {
-
+  const location = useLocation();
+  const pathnmame = location.pathname
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   return (
     <div className='layout'>
         <Sidebar/>
@@ -18,7 +25,7 @@ const Layout = () => {
                 <div className='content'>
                     <Outlet/>
                 </div>
-                <FixedProfile/>
+                {pathnmame !== "/profile" &&  <FixedProfile/>}
             </main>
         </section>
     </div>

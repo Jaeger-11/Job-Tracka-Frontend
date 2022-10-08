@@ -4,21 +4,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {MdLogout} from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { showSide, logOut, showNavbar } from "../Features/userSlice";
+import { showSide, logOut } from "../Features/userSlice";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const pathname = useLocation().pathname
 
-    const { showSidebar, showMobileSidebar } = useSelector((state) => state.user)
+    const { showSidebar } = useSelector((state) => state.user)
 
     const sideNavigate = (link) => {
         navigate(link)
-    }
-    const navigateClose = (link) => {
-        navigate(link);
-        dispatch(showNavbar(false));
     }
 
     if (showSidebar){
