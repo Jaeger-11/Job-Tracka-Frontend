@@ -12,13 +12,6 @@ const DashStats = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    if(isError && error && error.response.status === 401){
-        // dispatch(logOut());
-        return(
-            <Toast content="Unauthenticated, Logging Out...." />
-        )
-    }
-
     const totalClick = () => {
         dispatch(clearFilters());
         navigate('/applications');

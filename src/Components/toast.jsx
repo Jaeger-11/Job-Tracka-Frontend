@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { statusNull } from "../Features/newSlice";
 import { ColorRing } from "react-loader-spinner";
 import {MdDoneAll, MdError} from 'react-icons/md';
+import Bounce from "react-reveal/Bounce"
 
-const Toast = ({content, icon, style}) => {
+const Toast = ({content, style}) => {
     const dispatch = useDispatch();
     const {fetchStatus} = useSelector((state) => state.application)
     useEffect(() => {
@@ -18,6 +19,7 @@ const Toast = ({content, icon, style}) => {
 
 
     return (
+    <Bounce right>
         <div className={`toast-${style} toast flex-icons`}>
             {fetchStatus === 'loading' && <ColorRing
             visible={true}
@@ -32,6 +34,7 @@ const Toast = ({content, icon, style}) => {
             { fetchStatus === 'failed' && <MdError/>}
             {content}
         </div>
+    </Bounce>
     )
 }
 

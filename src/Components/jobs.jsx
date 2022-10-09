@@ -7,6 +7,7 @@ import Toast from "../Components/toast";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteApplication, getApplication } from '../Features/newSlice';
 import { getAllApplications } from '../Features/applicationSlice';
+import Fade from 'react-reveal/Fade';
 
 const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) => {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
         bg = 'declined'
     } 
   return (
+    <Fade bottom>
     <div className='jobs' key={_id}>
         {fetchStatus === "loading" && <Toast content="Deleting..." />}
         {fetchStatus === "success" && <Toast content="Application Deleted" style="success" />}
@@ -73,6 +75,7 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
             <Link to={_id}><button className={bg} onClick={viewDetails} >View Details</button></Link>
         </section>
     </div>
+    </Fade>
   )
 }
 
