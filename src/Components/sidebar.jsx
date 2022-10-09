@@ -5,6 +5,7 @@ import {MdLogout} from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { showSide, logOut } from "../Features/userSlice";
+import  Fade from "react-reveal/Fade";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Sidebar = () => {
 
     if (showSidebar){
         return (
+            <Fade left>
             <aside className="sidebar desktop">
                 <label className='menu cancel' onClick={() => dispatch(showSide(false))}> 
                     <span className={`${showSidebar ? 'firstChange' : 'first'} bar`}></span>
@@ -47,6 +49,7 @@ const Sidebar = () => {
                    <p>Log Out</p> 
                 </div>
             </aside>
+            </Fade>
           )
     }
   
