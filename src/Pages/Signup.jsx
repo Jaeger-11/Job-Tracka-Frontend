@@ -7,7 +7,8 @@ import { useState } from "react";
 import useAxios from "../Hooks/useAxios";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from "react-redux";
-import { logOut, userIn } from "../Features/userSlice"
+import { logOut, userIn } from "../Features/userSlice";
+import Fade from "react-reveal/Fade";
 
 const Signup = () => {
     const dispatch = useDispatch();
@@ -32,9 +33,13 @@ const Signup = () => {
   return (
     <div className="modal-container">
         <div className="modal">
+            <Fade left>
             <section className="modal-sect1 bg-red">
                 <img src={undrawjoin} alt="join illustration" />
             </section>
+            </Fade>
+
+            <Fade right>
             <section className="modal-sect2">
                 <div className="flex-between">
                     <h3 className="logo pointer" onClick={() => navigate("/")} >JobTracka</h3>
@@ -83,6 +88,7 @@ const Signup = () => {
                 </Formik>
                 <p className="pointer flex-icons" onClick={() => navigate("/")} > <MdArrowBackIosNew/> Go Back</p>
             </section>
+            </Fade>
         </div>
     </div>
   )

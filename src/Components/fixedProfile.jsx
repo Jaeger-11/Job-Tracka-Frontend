@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import GoalsProfile from './goalsProfile';
+import Slide from 'react-reveal/Slide';
 
 const FixedProfile = () => {
   const { username} = useSelector((store) =>  store.user )
 
   return (
+    <Slide right>
     <div className='fixed-profile'>
         <section>
           <p className="red pointer">Log out</p>
@@ -16,6 +18,7 @@ const FixedProfile = () => {
           <GoalsProfile/>
         </section>
     </div>
+    </Slide>
   )
 }
 
