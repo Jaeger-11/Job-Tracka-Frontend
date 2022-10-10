@@ -25,7 +25,7 @@ const Profile = () => {
         <section className='goals'>
           <h3>Goals</h3>
           
-          {goals && goals.goal && 
+          {goals && goals.goal.length > 0 && 
           
           <table className='goals-cont'>
             <tr className='headers'>
@@ -41,13 +41,11 @@ const Profile = () => {
               )
             })}
           </table>
-
           }
 
           { !goals.count &&  
           <div className="goals-empty">
             <p>You have no existing goals</p>
-            <span>Add Goal</span>
           </div> }
 
           <div className="add-cont">
