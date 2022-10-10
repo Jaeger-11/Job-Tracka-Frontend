@@ -25,7 +25,7 @@ const Profile = () => {
         <section className='goals'>
           <h3>Goals</h3>
           
-          {goals && goals.goal.length > 0 && 
+          {goals && goals.count > 0 && 
           
           <table className='goals-cont'>
             <tr className='headers'>
