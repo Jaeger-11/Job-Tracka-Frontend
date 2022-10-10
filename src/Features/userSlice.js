@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import useAxios from "../Hooks/useAxios";
+import applicationSlice from "./applicationSlice";
 
 var user = JSON.parse(window.localStorage.getItem('jobTrackaUser')) || '';
 
@@ -29,6 +30,33 @@ export const getGoals = createAsyncThunk(
     }
 )
 
+export const addGoal = createAsyncThunk(
+    'user/addGoal',
+    async(payload) => {
+        const resp = await useAxios.post('/goal', payload); 
+    }
+)
+
+export const editGoal = createAsyncThunk(
+    'user/editGoal',
+    async({_id, value}) => {
+        const resp = await useAxios.patch(`/goal/${_id}`, value)
+    }
+)
+
+export const deleteGoal = createAsyncThunk(
+    'user/deleteGoal',
+    async(payload) => {
+        console.log(payload)
+        try {
+            const resp = await useAxios.delete(`/goal/${payload}`);
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
+)
+
 const userSlice = createSlice({
     name:'user',
     initialState,
@@ -52,6 +80,15 @@ const userSlice = createSlice({
     extraReducers:{
         [getGoals.fulfilled]:(state, {payload}) => {
             state.goals = payload
+        },
+        [addGoal.fulfilled]:(state) => {
+            applicationSlice.isLoading = false;
+        },
+        [addGoal.pending]:(state) => {
+            applicationSlice.isLoading = true;
+        },
+        [addGoal.rejected]:(state) => {
+            applicationSlice.isLoading = false;
         }
     }
 })

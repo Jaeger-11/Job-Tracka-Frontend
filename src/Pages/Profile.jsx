@@ -1,6 +1,6 @@
 import '../Styles/profile.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { getGoals } from '../Features/userSlice';
+import { addGoal, getGoals } from '../Features/userSlice';
 import { useEffect } from 'react';
 import Goal from '../Components/goal';
 import {HiOutlineUser} from "react-icons/hi";
@@ -14,6 +14,12 @@ const Profile = () => {
     dispatch(getGoals());
   }, [])
 
+  const handleSubmit = (values) => {
+    dispatch(addGoal(values));
+    dispatch(getGoals());
+    console.log(values)
+  }
+
   return (
     <div className="profile">
         <section className='user'>
@@ -22,25 +28,38 @@ const Profile = () => {
             <h3>{username}</h3>
           </div>
         </section>  
+        
         <section className='goals'>
-          <h3>Goals</h3>
+          <h3>Goals / Tasks</h3>
           
           {goals && goals.count > 0 && 
-          
+          <>
           <table className='goals-cont'>
+            <thead>
             <tr className='headers'>
               <td className="icon"></td>
               <td className="goal"> <b></b> </td>
               <td className="date center"> <b>Date Created</b> </td>
               <td className='click'> </td>
-              <td className="edit"></td>
             </tr>
+            </thead>
+            <tbody>
             {goals.goal.map((item) => {
               return(
-                <Goal {...item}/>
+                <Goal {...item} key={item._id}/>
               )
             })}
+            </tbody>
           </table>
+          <section className='note'>
+            <div className='click flex-icons'>
+              <p className='bg-green'></p> <b> Accomplished</b>
+            </div>
+            <div className='click flex-icons'>
+              <p className='grey'></p> <b>Unaccomplished</b> 
+            </div>
+        </section>
+        </>
           }
 
           { !goals.count &&  
@@ -48,10 +67,30 @@ const Profile = () => {
             <p>You have no existing goals</p>
           </div> }
 
-          <div className="add-cont">
-            
-            <div className='btn-cont'><button>Add Goal</button></div>
-          </div>
+          <Formik 
+            initialValues={{
+              goal:"",
+            }}
+            validate={values=> {
+              const errors = {};
+              if(!values.goal){
+                  errors.goal = "Field Required"
+              }
+              return errors;
+            }}
+            onSubmit={ (values, { resetForm }) => {
+              const data = JSON.stringify(values,null,2)
+              handleSubmit(values)
+              resetForm()
+            }}
+          > 
+            <Form className="add-cont">
+              <h3>Add Goal</h3>
+              <Field component="textarea" rows="5" name="goal" className="input" placeholder='Goal / Task'/>
+              <ErrorMessage  name="goal" component="span" className="error"/>
+              <div className='btn-cont'> <button type='submit'>Add</button> </div>
+            </Form>
+          </Formik>
         </section>
     </div>
   )
