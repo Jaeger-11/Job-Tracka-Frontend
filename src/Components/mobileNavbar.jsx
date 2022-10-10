@@ -34,7 +34,7 @@ const MobileNavbar = () => {
                     {data.map((item) => {
                         const { name, link, icon, id } = item;
                         return (
-                            <Fade top>
+                            <Fade top key={id}>
                             <div key={id} onClick={() => sideNavigate(link)} className={`${ pathname === link && 'active' } pointer flex-icons sidelink`} >
                                  {icon} 
                                 <p>{name}</p>

@@ -1,4 +1,5 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import useAxios from "../Hooks/useAxios";
 
 var user = JSON.parse(window.localStorage.getItem('jobTrackaUser')) || '';
 
@@ -17,7 +18,16 @@ const initialState = {
     isLoading: true,
     showSidebar: true,
     showMobileSidebar:false,
+    goals:[],
 }
+
+export const getGoals = createAsyncThunk(
+    'user/getGoals',
+    async(_,thunkAPI) => {
+        const resp = await useAxios.get('/goal');
+        return resp.data
+    }
+)
 
 const userSlice = createSlice({
     name:'user',
@@ -37,6 +47,11 @@ const userSlice = createSlice({
         },
         showNavbar: (state,{payload}) => {
             state.showMobileSidebar = payload
+        }
+    },
+    extraReducers:{
+        [getGoals.fulfilled]:(state, {payload}) => {
+            state.goals = payload
         }
     }
 })
