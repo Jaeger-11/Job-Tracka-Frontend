@@ -12,12 +12,13 @@ const GoalsProfile = () => {
                 {data.count === 0 && <p>You currently have no goals 
                     <Link to='/profile' className='green' > Add goal </Link> 
                 </p>}
-                {data.goal.map((item) => {
+                {data.goal.slice(0,3).map((item) => {
                     const { goal, _id } = item;
                     return(
-                        <li key={_id}>{goal}</li>
+                        <li key={_id}>{goal.substring(0, 30)}...</li>
                     )
                 })}
+                <p style={{textAlign:'right'}}><Link to="/profile" className="green pointer" >View Goals</Link></p>
             </ul>
         )
     }

@@ -47,13 +47,7 @@ export const editGoal = createAsyncThunk(
 export const deleteGoal = createAsyncThunk(
     'user/deleteGoal',
     async(payload) => {
-        console.log(payload)
-        try {
-            const resp = await useAxios.delete(`/goal/${payload}`);
-        } catch (error) {
-            console.log(error);
-        }
-        
+        const resp = await useAxios.delete(`/goal/${payload}`);        
     }
 )
 

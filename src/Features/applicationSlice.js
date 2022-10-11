@@ -26,12 +26,8 @@ export const getAllApplications = createAsyncThunk(
         if(search){
             url = url + `&${searchBy}=${search}`;
         }
-        try {
-            const resp = await useAxios.get(url)
-            return resp.data
-        } catch (error) {
-            console.log(error)
-        }
+        const resp = await useAxios.get(url)
+        return resp.data
     }
 )
 
