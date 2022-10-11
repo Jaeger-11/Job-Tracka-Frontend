@@ -17,7 +17,6 @@ const Profile = () => {
   const handleSubmit = (values) => {
     dispatch(addGoal(values));
     dispatch(getGoals());
-    console.log(values)
   }
 
   return (
@@ -38,7 +37,7 @@ const Profile = () => {
             <thead>
             <tr className='headers'>
               <td className="icon"></td>
-              <td className="goal"> <b></b> </td>
+              <td className="goal"></td>
               <td className="date center"> <b>Date Created</b> </td>
               <td className='click'> </td>
             </tr>
@@ -51,6 +50,7 @@ const Profile = () => {
             })}
             </tbody>
           </table>
+          <i className="goal red"><b>*Click on Checkbox to switch status</b></i>
           <section className='note'>
             <div className='click flex-icons'>
               <p className='bg-green'></p> <b> Accomplished</b>

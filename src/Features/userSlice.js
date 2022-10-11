@@ -83,6 +83,7 @@ const userSlice = createSlice({
         },
         [addGoal.fulfilled]:(state) => {
             applicationSlice.isLoading = false;
+            getGoals();
         },
         [addGoal.pending]:(state) => {
             applicationSlice.isLoading = true;

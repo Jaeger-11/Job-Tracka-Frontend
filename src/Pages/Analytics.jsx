@@ -1,9 +1,9 @@
-
+import "../Styles/analytics.scss";
 
 const Analytics = () => {
 
     return(
-        <div>
+        <div className="analytics">
             ANALYTICS
         </div>
     )
