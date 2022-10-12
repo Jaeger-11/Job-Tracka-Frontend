@@ -2,6 +2,7 @@ import "../Styles/analytics.scss";
 import { fetchStats } from '../Hooks/fetchAPI';
 import { useQuery } from 'react-query';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie } from 'recharts';
+import { Link } from "react-router-dom";
 
 const Analytics = () => {
     const { isLoading, isError, error, data } = useQuery('stats', fetchStats, {retry: 2})
@@ -37,22 +38,21 @@ const Analytics = () => {
 
                 <h3 style={{marginTop:"0.5rem"}}>Applications By Status </h3>
                 <div className="flex-pie">
-                
-                        <PieChart width={270} height={270}>
-                            <Pie 
-                            dataKey="value" 
-                            data={pieData} 
-                            fill="#F50057" 
-                            labelLine={false}
-                            cx="45%"
-                            cy="45%" 
-                            >
-                                {pieData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                ))}
-                            </Pie>
-                            <Tooltip/>
-                        </PieChart>
+                    <PieChart width={270} height={270}>
+                        <Pie 
+                        dataKey="value" 
+                        data={pieData} 
+                        fill="#F50057" 
+                        labelLine={false}
+                        cx="45%"
+                        cy="45%" 
+                        >
+                            {pieData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip/>
+                    </PieChart>
 
                     <div>
                         <p className="colorNote flex-icons"> <span style={{backgroundColor:"#ffa500", width:"20px", height:"20px", display:"block"}} ></span> Pending</p>
@@ -65,7 +65,8 @@ const Analytics = () => {
 
             </section> :
             <section className="analyticsNone">
-                NO EXISTING APPLICATION
+                <p>No Existing Application</p>
+                <p className="pointer red"> <Link to="/new">Click to Add Application</Link> </p>
             </section>
             }
         </div>

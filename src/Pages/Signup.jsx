@@ -17,11 +17,13 @@ const Signup = () => {
     const [message, setMessage] = useState(null)
     const signIn = async (values) => {
         try {
+            setMessage("Registering...")
             dispatch(logOut())
             const response = await useAxios.post('/auth/signup', values)
             window.localStorage.setItem('jobTrackaUser', JSON.stringify(response.data));
             const user  = JSON.parse(window.localStorage.getItem('jobTrackaUser'))
             if (user){
+                setMessage("Redirecting...")
                 dispatch(userIn(user))
                 navigate('/')
             }

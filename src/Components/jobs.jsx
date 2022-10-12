@@ -3,15 +3,13 @@ import {Link} from "react-router-dom";
 import {MdLocationPin} from 'react-icons/md';
 import {BsCalendarEventFill, BsBagCheckFill} from 'react-icons/bs';
 import "../Styles/applications.scss";
-import Toast from "../Components/toast";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteApplication, getApplication } from '../Features/newSlice';
 import { getAllApplications } from '../Features/applicationSlice';
 import Fade from 'react-reveal/Fade';
 
 const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) => {
     const dispatch = useDispatch();
-    const { fetchStatus } = useSelector((state) => state.application)
     const deleteJob = () => {
         dispatch(deleteApplication(_id));
         dispatch(getAllApplications());
@@ -36,9 +34,6 @@ const Jobs = ({ company, position, location, status, jobType, createdAt, _id }) 
   return (
     <Fade bottom>
     <div className='jobs' key={_id}>
-        {fetchStatus === "loading" && <Toast content="Deleting..." />}
-        {fetchStatus === "success" && <Toast content="Application Deleted" style="success" />}
-        {fetchStatus === "failed" && <Toast content="Error Occured..." style="failed" />}
         <section className='jobs-sect-1'>
             <h3>{position}</h3>
             <p>{company}</p>

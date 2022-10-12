@@ -4,9 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllApplications, clearFilters, handleInput } from "../Features/applicationSlice";
 import Jobs from "../Components/jobs";
 import Loader from "../Components/loader";
+import Toast from "../Components/toast";
 
 const Applications = () => {
     const dispatch = useDispatch();
+    const { fetchStatus } = useSelector((state) => state.application)
     const { applications, totalPages, totalApplications, page, status, jobType, sort, search, searchBy, isLoading } = useSelector((store) => store.applications)
     useEffect(() => {
         dispatch(getAllApplications());
@@ -52,6 +54,9 @@ const Applications = () => {
 
     return(
     <section className="applications">
+        {fetchStatus === "loading" && <Toast content="Deleting..." />}
+        {fetchStatus === "success" && <Toast content="Application Deleted" style="success" />}
+        {fetchStatus === "failed" && <Toast content="Error Occured..." style="failed" />}
         <div>
             <form className="form">
                 <section className="flex-search">

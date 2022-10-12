@@ -96,7 +96,6 @@
 
 .application{
     padding: 1rem;
-    // background-color: $primary-bg;
     height: 100%;
     &-info{
         @include flex($direction:column, $gap: 1rem, $align:initial);
