@@ -1,11 +1,11 @@
 import "../Styles/analytics.scss";
 import { fetchStats } from '../Hooks/fetchAPI';
 import { useQuery } from 'react-query';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie } from 'recharts';
 
 const Analytics = () => {
     const { isLoading, isError, error, data } = useQuery('stats', fetchStats, {retry: 2})
-    console.log(data)
+
     let bardata = data && data.monthlyApplications;
     let pieData = [];
     if(data){

@@ -202,3 +202,28 @@ button{
   background-color: $red;
   color: $white;
 }
+
+// STYLING FOR RESOURCES PAGE
+.resources{
+  padding: 1rem;
+  .img-cont{
+    width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+    img{
+      width: 250px;
+      height: 250px;
+    }
+  }
+  ul{
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  i{
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: $red;
+  }
+}
