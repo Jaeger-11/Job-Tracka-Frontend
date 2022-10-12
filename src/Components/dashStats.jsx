@@ -69,7 +69,7 @@ const DashStats = () => {
                 <div className='dashstats-outer'>
                     <Fade bottom>
                     <div className='outer'></div>
-                    <article className='dashstats-inner' style={{borderColor:'orange'}} onClick={pendingClick}>
+                    <article className='dashstats-inner' style={{borderColor:'#ffa500'}} onClick={pendingClick}>
                         <h3>Pending</h3>
                         <p>{pending}</p>
                     </article>

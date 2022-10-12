@@ -3,4 +3,15 @@
 
 .analytics{
     padding: 1rem;
+    width: 100%;
+    .flex-pie{
+        @include flex($gap:1rem, $justify:center);
+        flex-wrap: wrap;
+        .colorNote{
+            font-size: 0.8rem;
+        }
+        @media screen and (max-width: $tablet) {
+            justify-content: left;   
+        }
+    }
 }
