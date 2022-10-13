@@ -1,18 +1,81 @@
 @import './variable';
+@import './base';   
+
+.about-cont{
+    background-color: $primary-bg;
+    header{
+        margin: 1rem 0;
+        padding: 1rem;
+        background-color: white;
+        text-transform: capitalize;
+        h1{
+            width: 80%;
+            margin: auto;
+        }
+    }
+    footer{
+        text-align: center;
+        padding: 1rem 0;
+        background-color: white;
+        border-radius: 20% 20% 0 0;
+    }
+
+    @media screen and (max-width:$tablet) {
+        header h1{
+            width: 100%;
+        }
+    }
+}
 
 .about{
-    padding: 1rem;
+    width: 80%;
+    margin: auto;
     &-hero{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        // &-article{
-            
-        // }
-
+        gap: 1rem;
+        margin: 2rem 0;
+        p{
+            font-size: 1.1rem;
+        }
+        &-total{
+            text-align: center;
+            img{
+                width: 80%;
+            }
+        }
+        &-article{
+            @include flex($justify:center, $direction:column, $align:initial, $gap:1rem);
+            span{
+                display:block;
+                color: $red;
+                text-align: right;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
     }
 
-    footer{
-        text-align: center;
-        margin: 10px 0;
+    .turn{
+        background-color: white;
+        padding: 1rem;
+        @media screen and (max-width:$tablet) {
+            div{
+                grid-row-start: 0;
+                grid-row-end: 1;
+            }
+        }
+    }
+
+    @media screen and (max-width:$tablet) {
+        width: 100%;
+        // padding: 1rem;
+        &-hero{
+            grid-template-columns: 1fr;
+            padding: 1rem;
+        }
+        p{
+            font-size: 1rem;
+        }
     }
 }

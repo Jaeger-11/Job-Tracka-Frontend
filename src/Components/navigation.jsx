@@ -4,7 +4,7 @@ import "../Styles/navigation.scss";
 const Navigation = () => {
   return (
     <nav className="navigation">
-        <h3 className="logo">JobTracka</h3>
+        <h3 className="logo"> <Link to="/">JobTracka</Link> </h3>
 
         <div className="navigation-sub">
             <p> <Link to='/about'>About</Link> </p>

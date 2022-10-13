@@ -28,10 +28,7 @@ const Landing = () => {
                 <img src={undrawreminder} alt="Hero Image" />
             </div>
         </section>
-
-        <section>
-            
-        </section>
+        
     </div>
   )
 }
