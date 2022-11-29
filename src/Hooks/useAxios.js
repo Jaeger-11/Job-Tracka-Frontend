@@ -1,7 +1,9 @@
 import axios from "axios";
+// https://job-tracka.herokuapp.com/api/v1   heroku
+// https://lively-crab-shorts.cyclic.app/    cyclic
 
 const useAxios =  axios.create({
-    baseURL: "https://job-tracka.herokuapp.com/api/v1",
+    baseURL: "https://lively-crab-shorts.cyclic.app/api/v1",
     headers:{
         "content-type": "application/json"
     }
