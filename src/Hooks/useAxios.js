@@ -1,9 +1,10 @@
 import axios from "axios";
 // https://job-tracka.herokuapp.com/api/v1   heroku
 // https://lively-crab-shorts.cyclic.app/    cyclic
+// https://job-tracka-backend.vercel.app/ vercel
 
 const useAxios =  axios.create({
-    baseURL: "https://lively-crab-shorts.cyclic.app/api/v1",
+    baseURL: "https://job-tracka-backend.vercel.app/api/v1",
     headers:{
         "content-type": "application/json"
     }
